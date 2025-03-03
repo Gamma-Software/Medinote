@@ -26,7 +26,7 @@ interface KV {
   lastSynced: number;
   user: User;
   token: Token;
-  monographs: string[];
+  shares: string[];
   deviceId: string;
   lastBackupTime: number;
   fullOfflineMode: boolean;
@@ -37,7 +37,7 @@ export const KEYS: (keyof KV)[] = [
   "lastSynced",
   "user",
   "token",
-  "monographs",
+  "shares",
   "deviceId",
   "lastBackupTime",
   "fullOfflineMode"

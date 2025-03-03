@@ -26,22 +26,22 @@ const TEST_TIMEOUT = 30 * 1000;
 afterAll(async () => {
   const db = await databaseTest();
   await login(db);
-  await db.monographs.refresh();
+  await db.shares.refresh();
 
-  for (const id of db.monographs.monographs) {
-    await db.monographs.unpublish(id);
+  for (const id of db.shares.shares) {
+    await db.shares.unpublish(id);
   }
 
   await logout(db);
 }, TEST_TIMEOUT);
 
-// test("get monographs", () =>
+// test("get shares", () =>
 //   databaseTest().then(async (db) => {
 //     await db.user.login(user.email, user.password, user.hashedPassword);
 
-//     await db.monographs.refresh();
+//     await db.shares.refresh();
 
-//     expect(db.monographs.all).toBeGreaterThanOrEqual(0);
+//     expect(db.shares.all).toBeGreaterThanOrEqual(0);
 //   }));
 
 test(
@@ -49,13 +49,13 @@ test(
   () =>
     noteTest().then(async ({ db, id }) => {
       await login(db);
-      await db.monographs.refresh();
+      await db.shares.refresh();
 
-      const monographId = await db.monographs.publish(id);
+      const monographId = await db.shares.publish(id);
 
-      expect(await db.monographs.all.has(id)).toBeTruthy();
+      expect(await db.shares.all.has(id)).toBeTruthy();
 
-      const monograph = await db.monographs.get(monographId);
+      const monograph = await db.shares.get(monographId);
       const note = await db.notes.note(id);
       expect(monograph.id).toBe(monographId);
       expect(monograph.title).toBe(note.title);
@@ -70,17 +70,17 @@ test(
   () =>
     noteTest().then(async ({ db, id }) => {
       await login(db);
-      await db.monographs.refresh();
+      await db.shares.refresh();
 
-      const monographId = await db.monographs.publish(id);
-      let monograph = await db.monographs.get(monographId);
+      const monographId = await db.shares.publish(id);
+      let monograph = await db.shares.get(monographId);
       const note = await db.notes.note(id);
       expect(monograph.title).toBe(note.title);
 
       const editedTitle = "EDITED TITLE OF MY NOTE!";
       await db.notes.add({ id, title: editedTitle });
-      await db.monographs.publish(id);
-      monograph = await db.monographs.get(monographId);
+      await db.shares.publish(id);
+      monograph = await db.shares.get(monographId);
       expect(monograph.title).toBe(editedTitle);
 
       await logout(db);
@@ -93,13 +93,13 @@ test(
   () =>
     noteTest().then(async ({ db, id }) => {
       await login(db);
-      await db.monographs.refresh();
+      await db.shares.refresh();
 
-      await db.monographs.publish(id);
-      expect(await db.monographs.all.has(id)).toBeTruthy();
+      await db.shares.publish(id);
+      expect(await db.shares.all.has(id)).toBeTruthy();
 
-      await db.monographs.unpublish(id);
-      expect(await db.monographs.all.has(id)).toBeFalsy();
+      await db.shares.unpublish(id);
+      expect(await db.shares.all.has(id)).toBeFalsy();
 
       await logout(db);
     }),

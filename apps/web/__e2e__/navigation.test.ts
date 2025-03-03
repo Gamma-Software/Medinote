@@ -29,7 +29,7 @@ const routes = [
   createRoute("notes", "Notes"),
   createRoute("notebooks", "Notebooks"),
   createRoute("favorites", "Favorites"),
-  createRoute("monographs", "Monographs"),
+  createRoute("shares", "Shares"),
   createRoute("reminders", "Reminders"),
   createRoute("tags", "Tags"),
   createRoute("trash", "Trash")

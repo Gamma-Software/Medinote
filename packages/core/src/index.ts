@@ -36,7 +36,7 @@ export {
 } from "./collections/reminders.js";
 export * from "./logger.js";
 export * from "./api/debug.js";
-export * from "./api/monographs.js";
+export * from "./api/shares.js";
 export * from "./api/subscriptions.js";
 export * from "./api/pricing.js";
 export { VAULT_ERRORS } from "./api/vault.js";

@@ -61,8 +61,8 @@ function Notes(props: NotesProps) {
           context={
             context.type === "favorite"
               ? "favorites"
-              : context.type === "monographs"
-              ? "monographs"
+              : context.type === "shares"
+              ? "shares"
               : "notes"
           }
         />

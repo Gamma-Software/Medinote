@@ -283,8 +283,8 @@ class Sync {
       await this.start({ type: "send" });
       return;
     }
-    // refresh monographs
-    await this.db.monographs.refresh().catch(this.logger.error);
+    // refresh shares
+    await this.db.shares.refresh().catch(this.logger.error);
     // update trash cache
     await this.db.trash.buildCache();
 

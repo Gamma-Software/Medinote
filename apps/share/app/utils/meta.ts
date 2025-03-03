@@ -52,14 +52,14 @@ export function generateMetaDescriptors(
     });
   if (props.url) descriptors.push({ name: "og:url", content: props.url });
   descriptors.push({ name: "og:type", content: props.type });
-  descriptors.push({ name: "og:site_name", content: "Monograph" });
+  descriptors.push({ name: "og:site_name", content: "Share" });
   if (props.publishedAt)
     descriptors.push({
       name: "article:published_time",
       content: props.publishedAt
     });
 
-  descriptors.push({ name: "author", content: "Monograph" });
+  descriptors.push({ name: "author", content: "Share" });
   descriptors.push({ name: "twitter:card", content: "summary_large_image" });
   descriptors.push({ name: "twitter:site", content: "@notesnook" });
   descriptors.push({ name: "twitter:creator", content: "@notesnook" });

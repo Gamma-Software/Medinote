@@ -207,11 +207,11 @@ const routes = defineRoutes({
       }
     });
   },
-  "/monographs": () => {
-    notestore.setContext({ type: "monographs" });
+  "/shares": () => {
+    notestore.setContext({ type: "shares" });
     return defineRoute({
       key: "notes",
-      title: strings.routes.Monographs(),
+      title: strings.routes.Shares(),
       type: "notes",
       component: Notes,
       buttons: {
