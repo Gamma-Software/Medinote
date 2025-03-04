@@ -2108,7 +2108,7 @@ If your issue is critical (e.g. notes not syncing, crashes etc.), please [join o
   enableSpellChecker: () => t`Enable spell checker`,
   languages: () => t`Languages`,
   spellCheckerLanguagesDescription: () =>
-    t`Select the languages the spell checker should check in.`,
+    t`Select the languages the spell checker should check in. (The app will restart)`,
   customDictionaryWords: () => t`Custom dictionary words`,
   toolbar: () => t`Toolbar`,
   profile: () => t`Profile`,
