@@ -19,12 +19,9 @@ import { ScriptManager, Script } from '@callstack/repack/client';
 import {
   messages as $en
 } from "@notesnook/intl/dist/locales/$en.json";
-import {
-  messages as $pseudo
-} from "@notesnook/intl/dist/locales/$pseudo-LOCALE.json";
 
 i18n.load({
-  en: __DEV__ ? $pseudo : $en
+  en: $en
 });
 setI18nGlobal(i18n);
 i18n.activate("en");
@@ -45,7 +42,7 @@ if (global.__DEV__) {
 try {
   ScriptManager.shared.addResolver(async (scriptId) => {
     // `scriptId` will be either 'student' or 'teacher'
-  
+
     // In dev mode, resolve script location to dev server.
     if (__DEV__) {
       return {
@@ -53,12 +50,12 @@ try {
         cache: false,
       };
     }
-  
+
     return {
       url: Script.getFileSystemURL(scriptId)
     };
   });
-  
+
 } catch(e) {
   /** ignore error when running with metro bundler */
 }
