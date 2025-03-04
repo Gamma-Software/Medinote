@@ -19,7 +19,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 import { useCallback, useRef, useState } from "react";
 import Modal from "react-modal";
 import { Button, Flex, Text } from "@theme-ui/components";
-import { Monograph } from "./types";
+import { Share } from "./types";
 import Turnstile from "react-turnstile";
 import { BaseThemeProvider } from "../theme-provider";
 
@@ -51,9 +51,9 @@ const REPORT_TYPES = [
 type SubmitStatus = { success: boolean; error?: string };
 export default function ReportDialog({
   setVisible,
-  monograph
+  share
 }: {
-  monograph: Monograph;
+  share: Share;
   setVisible: (visible: boolean) => void;
 }) {
   const formRef = useRef<HTMLFormElement>(null);
@@ -139,7 +139,7 @@ export default function ReportDialog({
           {status?.success ? (
             <>
               <Text variant="body">
-                Thank you for helping us keep Monographs safe for everyone.
+                Thank you for helping us keep Shares safe for everyone.
               </Text>
             </>
           ) : (
@@ -162,8 +162,8 @@ export default function ReportDialog({
 
                     const body = new FormData(formRef.current);
 
-                    body.set("itemType", "monograph");
-                    body.set("id", monograph.id);
+                    body.set("itemType", "share");
+                    body.set("id", share.id);
                     body.set("type", item.type);
                     await onSubmit(body);
                   }}

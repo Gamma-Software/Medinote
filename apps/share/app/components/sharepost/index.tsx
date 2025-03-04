@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 import "@notesnook/editor/styles/styles.css";
-import { Monograph } from "./types";
+import { Share } from "./types";
 import {
   Box,
   Button,
@@ -106,24 +106,24 @@ function generateTableOfContents() {
 }
 
 export const MonographPage = ({
-  monograph,
+  share,
   encodedKey
 }: {
-  monograph: Monograph;
+  share: Share;
   encodedKey?: string;
 }) => {
   const [reportDialogVisible, setReportDialogVisible] = useState(false);
   const [tableOfContents, setTableOfContents] = useState<TableOfContent[]>([]);
-  const [content, setContent] = useState(monograph.content);
+  const [content, setContent] = useState(share.content);
   const [showTableOfContents, setShowTableOfContents] = useState(false);
   const editorContainer = useRef<HTMLDivElement>(null);
 
-  if (!content && monograph.encryptedContent)
+  if (!content && share.encryptedContent)
     return (
       <ClientOnly fallback={<div />}>
         {() => (
           <MonographLockscreen
-            monograph={monograph}
+            share={share}
             onUnlock={(content) => setContent(content)}
             encodedKey={encodedKey}
           />
@@ -160,7 +160,7 @@ export const MonographPage = ({
             textAlign: "center"
           }}
         >
-          <ResponsiveTitle title={monograph.title} />
+          <ResponsiveTitle title={share.title} />
         </Box>
       </Box>
       <Box
@@ -173,7 +173,7 @@ export const MonographPage = ({
         }}
       >
         <Text as="h1" variant="heading" sx={{ fontSize: 32, fontWeight: 800 }}>
-          {monograph.title}
+          {share.title}
         </Text>
         <Flex sx={{ gap: 2 }}>
           <Text
@@ -182,13 +182,13 @@ export const MonographPage = ({
               color: "paragraph-secondary"
             }}
           >
-            {formatDate(monograph.datePublished, {
+            {formatDate(share.datePublished, {
               type: "date-time",
               dateFormat: "YYYY-MM-DD",
               timeFormat: "24-hour"
             })}
           </Text>
-          {monograph.encryptedContent ? (
+          {share.encryptedContent ? (
             <Flex sx={{ gap: "2px" }}>
               <Icon path={mdiLockOutline} size={14} color="var(--accent)" />
               <Text
@@ -227,7 +227,7 @@ export const MonographPage = ({
           )}
           <Image
             sx={{ display: "none" }}
-            src={`https://api.notesnook.com/monographs/${monograph.id}/view`}
+            src={`https://api.notesnook.com/shares/${share.id}/view`}
           />
         </Flex>
       </Box>
@@ -364,7 +364,7 @@ export const MonographPage = ({
       <Footer subtitle="Published via Notesnook" />
       {reportDialogVisible ? (
         <ReportDialog
-          monograph={monograph}
+          share={share}
           setVisible={(visible) => {
             setReportDialogVisible(visible);
           }}
@@ -375,13 +375,13 @@ export const MonographPage = ({
 };
 
 function MonographLockscreen({
-  monograph,
+  share,
   encodedKey,
   onUnlock
 }: {
-  monograph: Monograph;
+  share: Share;
   encodedKey?: string;
-  onUnlock: (content: Monograph["content"]) => void;
+  onUnlock: (content: Share["content"]) => void;
 }) {
   const [error, setError] = useState<string>();
   const [loading, setLoading] = useState<boolean>();
@@ -392,11 +392,10 @@ function MonographLockscreen({
     setError(undefined);
     setLoading(true);
     try {
-      const result = await unlockMonograph(monograph, password.current).catch(
-        (e) => {
-          console.error(e);
-          setError(
-            `An error occurred while unlocking the monograph: ${e.message}`
+      const result = await unlockShare(share, password.current).catch((e) => {
+        console.error(e);
+        setError(
+            `An error occurred while unlocking the share: ${e.message}`
           );
         }
       );
@@ -413,7 +412,7 @@ function MonographLockscreen({
     } finally {
       setLoading(false);
     }
-  }, [monograph, onUnlock]);
+  }, [share, onUnlock]);
 
   useEffect(() => {
     if (!encodedKey) return;
@@ -448,7 +447,7 @@ function MonographLockscreen({
         variant="heading"
         sx={{ fontSize: 32, fontWeight: 800, mt: 20 }}
       >
-        {monograph.title}
+        {share.title}
       </Text>
       {loading ? (
         <>
@@ -686,12 +685,12 @@ function fromBase64Url(base64url: string) {
   );
 }
 
-async function unlockMonograph(
-  monograph: Monograph,
+async function unlockShare(
+  share: Share,
   password: string
-): Promise<Monograph["content"] | false> {
+): Promise<Share["content"] | false> {
   if (password === "") return false;
-  const { encryptedContent } = monograph;
+  const { encryptedContent } = share;
   if (!encryptedContent) return false;
   try {
     const decrypted = await NNCrypto.decrypt(
@@ -702,7 +701,7 @@ async function unlockMonograph(
       },
       "text"
     );
-    return JSON.parse(decrypted) as Monograph["content"];
+    return JSON.parse(decrypted) as Share["content"];
   } catch (e) {
     const error = e as Error;
     if (

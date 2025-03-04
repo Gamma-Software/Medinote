@@ -49,7 +49,7 @@ import { MoveNoteDialog } from "../../dialogs/move-note-dialog";
 import { isUserPremium } from "../../hooks/use-is-user-premium";
 import { navigate } from "../../navigation";
 import { useEditorStore } from "../../stores/editor-store";
-import { useStore as useMonographStore } from "../../stores/share-store";
+import { useStore as useShareStore } from "../../stores/share-store";
 import { store } from "../../stores/note-store";
 import { store as selectionStore } from "../../stores/selection-store";
 import { store as tagStore } from "../../stores/tag-store";

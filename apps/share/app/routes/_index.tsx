@@ -32,7 +32,7 @@ import {
   mdiLockOutline,
   mdiShareOutline
 } from "@mdi/js";
-import { MonographChat } from "../components/share-chat";
+import { ShareChat } from "../components/share-chat";
 import { Icon } from "@notesnook/ui";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
@@ -146,7 +146,7 @@ export default function Monograph() {
           </ButtonLink>
         </Flex>
 
-        <MonographChat
+        <ShareChat
           sx={{
             maxWidth: ["95%", 700],
             mt: 50,
