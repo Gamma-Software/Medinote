@@ -31,7 +31,7 @@ describe("APP LAUNCH AND NAVIGATION", () => {
     await Tests.navigate("Trash");
     await Tests.navigate("Tags");
     await Tests.navigate("Settings");
-    await Tests.navigate("Monographs");
+    await Tests.navigate("Shares");
     await Tests.navigate("Reminders");
     await Tests.navigate("Notes");
   });

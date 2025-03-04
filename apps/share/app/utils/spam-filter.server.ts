@@ -18,7 +18,7 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 import { z } from "zod";
-import { Monograph } from "../components/monographpost/types";
+import { Share } from "../components/sharepost/types";
 import { read, write } from "./storage";
 
 export const SpamFilterRule = z.object({
@@ -37,10 +37,10 @@ export async function isSpamCached(id: string) {
   return cache.includes(id);
 }
 
-export async function isSpam(monograph: Monograph) {
+export async function isSpam(share: Share) {
   try {
     const cache = await read<string[]>("spam-cache", []);
-    if (cache.includes(monograph.id)) return true;
+    if (cache.includes(share.id)) return true;
 
     const rules = await read<SpamFilterRule[]>("rules", []);
     const userIdRules = new Set(
@@ -51,12 +51,11 @@ export async function isSpam(monograph: Monograph) {
     );
 
     const isSpam = (() => {
-      if (userIdRules.has(monograph.userId) || idRules.has(monograph.id))
-        return true;
+      if (userIdRules.has(share.userId) || idRules.has(share.id)) return true;
 
       for (const rule of rules) {
         if (rule.property === "id" || rule.property === "userId") continue;
-        const value = monograph.content?.data;
+        const value = share.content?.data;
         if (!value || typeof value !== "string") continue;
         if (rule.type === "literal" && value.includes(rule.value)) return true;
         else if (rule.type === "regex") {
@@ -68,8 +67,8 @@ export async function isSpam(monograph: Monograph) {
     })();
 
     if (isSpam) {
-      console.log("Spam detected", monograph.id);
-      cache.push(monograph.id);
+      console.log("Spam detected", share.id);
+      cache.push(share.id);
       await write("spam-cache", cache);
     }
     return isSpam;

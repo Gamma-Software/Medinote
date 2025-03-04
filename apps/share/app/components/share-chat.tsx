@@ -24,7 +24,7 @@ import { SxProp } from "@theme-ui/core";
 
 type Props = SxProp & { publicUrl: string };
 
-export function MonographChat({ sx, publicUrl }: Props) {
+export function ShareChat({ sx, publicUrl }: Props) {
   return (
     <Flex
       sx={{

@@ -23,31 +23,31 @@ import BaseStore from "./index";
 import { store as noteStore } from "./note-store";
 import { Note, VirtualizedGrouping, PublishOptions } from "@notesnook/core";
 
-class MonographStore extends BaseStore<MonographStore> {
-  monographs: VirtualizedGrouping<Note> | undefined = undefined;
+class ShareStore extends BaseStore<ShareStore> {
+  shares: VirtualizedGrouping<Note> | undefined = undefined;
 
   refresh = async () => {
-    const grouping = await db.monographs.all.grouped(
+    const grouping = await db.shares.all.grouped(
       db.settings.getGroupOptions("notes")
     );
-    this.set({ monographs: grouping });
+    this.set({ shares: grouping });
   };
 
   publish = async (noteId: string, opts: PublishOptions) => {
-    const publishId = await db.monographs.publish(noteId, opts);
+    const publishId = await db.shares.publish(noteId, opts);
     await this.get().refresh();
     await noteStore.refreshContext();
     return publishId;
   };
 
   unpublish = async (noteId: string) => {
-    await db.monographs.unpublish(noteId);
+    await db.shares.unpublish(noteId);
     await this.get().refresh();
     await noteStore.refreshContext();
   };
 }
 
-const [useStore, store] = createStore<MonographStore>(
-  (set, get) => new MonographStore(set, get)
+const [useStore, store] = createStore<ShareStore>(
+  (set, get) => new ShareStore(set, get)
 );
 export { useStore, store };

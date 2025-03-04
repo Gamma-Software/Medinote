@@ -30,7 +30,7 @@ export const EditorEvents = {
   logger: "native:logger",
   back: "editor-event:back",
   pro: "editor-event:pro",
-  monograph: "editor-event:monograph",
+  share: "editor-event:share",
   properties: "editor-event:properties",
   fullscreen: "editor-event:fullscreen",
   link: "editor-event:link",

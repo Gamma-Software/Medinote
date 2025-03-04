@@ -52,7 +52,7 @@ const routeNames = {
   TaggedNotes: "TaggedNotes",
   ColoredNotes: "ColoredNotes",
   TopicNotes: "TopicNotes",
-  Monographs: "Monographs",
+  Shares: "Shares",
   Auth: "Auth",
   Intro: "Intro",
   Welcome: "Welcome",
@@ -83,7 +83,7 @@ const routeUpdateFunctions: {
   TaggedNotes: (params) => eSendEvent("TaggedNotes", params),
   ColoredNotes: (params) => eSendEvent("ColoredNotes", params),
   TopicNotes: (params) => eSendEvent("TopicNotes", params),
-  Monographs: (params) => eSendEvent("Monographs", params),
+  Shares: (params) => eSendEvent("Shares", params),
   Reminders: () => useReminderStore.getState().refresh(),
   Search: () => eSendEvent(eOnRefreshSearch)
 };

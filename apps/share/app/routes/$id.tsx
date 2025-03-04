@@ -20,7 +20,7 @@ import type { MetaFunction, LoaderFunctionArgs } from "@remix-run/node";
 import { Cipher } from "@notesnook/crypto";
 import { Flex, Text } from "@theme-ui/components";
 import { useLoaderData } from "@remix-run/react";
-import { MonographPage } from "../components/monographpost";
+import { MonographPage } from "../components/sharepost";
 import { useHashLocation } from "../utils/use-hash-location";
 import { isSpam, isSpamCached } from "../utils/spam-filter.server";
 import { Header } from "../components/header";
@@ -28,6 +28,7 @@ import { Footer } from "../components/footer";
 import { API_HOST, PUBLIC_URL } from "../utils/env";
 import { generateMetaDescriptors } from "../utils/meta";
 import { format } from "date-fns/format";
+import { Share } from "../components/sharepost/types";
 
 type Monograph = {
   title: string;
@@ -61,7 +62,7 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
     description: data?.metadata.shortDescription,
     imageAlt: data?.metadata.fullDescription,
     imageUrl: imageUrl,
-    url: data?.monograph ? `${PUBLIC_URL}/${data?.monograph.id}` : undefined,
+    url: data?.share ? `${PUBLIC_URL}/${data?.share.id}` : undefined,
     publishedAt: data?.metadata.datePublished,
     type: "article"
   });
@@ -69,22 +70,21 @@ export const meta: MetaFunction<typeof loader> = ({ data }) => {
 
 export async function loader({ params }: LoaderFunctionArgs) {
   try {
-    const monographId = params["id"];
+    const shareId = params["id"];
 
-    if (monographId && (await isSpamCached(monographId))) throw new Error();
+    if (shareId && (await isSpamCached(shareId))) throw new Error();
 
-    const monograph = await fetch(`${API_HOST}/monographs/${monographId}`)
-      .then((r) => r.json() as Promise<MonographResponse>)
+    const share = await fetch(`${API_HOST}/shares/${shareId}`)
+      .then((r) => r.json() as Promise<ShareResponse>)
       .then(
-        (data) => ({ ...data, content: JSON.parse(data.content) } as Monograph)
+        (data) => ({ ...data, content: JSON.parse(data.content) } as Share)
       );
 
-    if (!monograph.encryptedContent && (await isSpam(monograph)))
-      throw new Error();
+    if (!share.encryptedContent && (await isSpam(share))) throw new Error();
 
-    const metadata = getMonographMetadata(monograph);
+    const metadata = getShareMetadata(share);
     return {
-      monograph,
+      share,
       metadata
     };
   } catch (e) {

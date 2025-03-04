@@ -87,7 +87,7 @@ export const deleteItems = async (
     useRelationStore.getState().update();
   } else if (type === "note") {
     for (const id of itemIds) {
-      if (db.monographs.isPublished(id)) {
+      if (db.shares.isPublished(id)) {
         ToastManager.show({
           heading: strings.someNotesPublished(),
           message: strings.unpublishToDelete(),

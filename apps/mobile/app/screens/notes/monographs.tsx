@@ -22,48 +22,48 @@ import NotesPage from ".";
 import { db } from "../../common/database";
 import Navigation, { NavigationProps } from "../../services/navigation";
 import { NotesScreenParams } from "../../stores/use-navigation-store";
-import { openMonographsWebpage } from "./common";
+import { openSharesWebpage } from "./common";
 import { strings } from "@notesnook/intl";
 
 export const MONOGRAPH_PLACEHOLDER_DATA = {
-  title: strings.yourMonographs(),
-  paragraph: strings.monographsEmpty(),
-  button: strings.learnMoreMonographs(),
-  action: openMonographsWebpage,
-  loading: strings.loadingMonographs(),
+  title: strings.yourShares(),
+  paragraph: strings.SharesEmpty(),
+  button: strings.learnMoreShares(),
+  action: openSharesWebpage,
+  loading: strings.loadingShares(),
   type: "monograph",
   buttonIcon: "information-outline"
 };
 
-export const Monographs = ({
+export const Shares = ({
   navigation,
   route
-}: NavigationProps<"Monographs">) => {
+}: NavigationProps<"Shares">) => {
   return (
     <NotesPage
       navigation={navigation}
       route={route}
-      get={Monographs.get}
+      get={Shares.get}
       placeholder={MONOGRAPH_PLACEHOLDER_DATA}
-      onPressFloatingButton={openMonographsWebpage}
+      onPressFloatingButton={openSharesWebpage}
       canGoBack={route.params?.canGoBack}
       focusControl={true}
     />
   );
 };
 
-Monographs.get = async (params?: NotesScreenParams, grouped = true) => {
+Shares.get = async (params?: NotesScreenParams, grouped = true) => {
   if (!grouped) {
-    return await db.monographs.all.items();
+    return await db.shares.all.items();
   }
 
-  return await db.monographs.all.grouped(db.settings.getGroupOptions("notes"));
+  return await db.shares.all.grouped(db.settings.getGroupOptions("notes"));
 };
 
-Monographs.navigate = (canGoBack?: boolean) => {
-  Navigation.navigate<"Monographs">("Monographs", {
-    item: { type: "monograph" } as any,
+Shares.navigate = (canGoBack?: boolean) => {
+  Navigation.navigate<"Shares">("Shares", {
+    item: { type: "share" } as any,
     canGoBack: canGoBack as boolean,
-    title: strings.dataTypesPluralCamelCase.monograph()
+    title: strings.dataTypesPluralCamelCase.share()
   });
 };

@@ -32,7 +32,7 @@ import {
   mdiLockOutline,
   mdiShareOutline
 } from "@mdi/js";
-import { MonographChat } from "../components/monograph-chat";
+import { MonographChat } from "../components/share-chat";
 import { Icon } from "@notesnook/ui";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
@@ -139,7 +139,7 @@ export default function Monograph() {
               bg: "background-secondary",
               border: "1px solid var(--border)"
             }}
-            href="https://help.notesnook.com/publish-notes-with-monographs"
+            href="https://help.notesnook.com/publish-notes-with-shares"
             target="_blank"
           >
             How it works

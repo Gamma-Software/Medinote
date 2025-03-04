@@ -59,7 +59,7 @@ const HOSTNAMES = {
   [extractHostname(hosts.SUBSCRIPTIONS_HOST)]:
     "Subscriptions Management Server",
   [extractHostname(hosts.ISSUES_HOST)]: "Bug Reporting Server",
-  [extractHostname(hosts.MONOGRAPH_HOST)]: "Monograph Server"
+  [extractHostname(hosts.MONOGRAPH_HOST)]: "Share Server"
 };
 
 export const getServerNameFromHost = (host: string) => {

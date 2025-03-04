@@ -28,7 +28,7 @@ import { writeText } from "clipboard-polyfill";
 import { ScopedThemeProvider } from "../theme-provider";
 import { showToast } from "../../utils/toast";
 import { EV, EVENTS, hosts } from "@notesnook/core";
-import { useStore } from "../../stores/monograph-store";
+import { useStore } from "../../stores/share-store";
 import ReactModal from "react-modal";
 import { DialogButton } from "../dialog";
 import { Note } from "@notesnook/core";
@@ -41,7 +41,7 @@ type PublishViewProps = {
 function PublishView(props: PublishViewProps) {
   const { note, onClose } = props;
   const [publishId, setPublishId] = useState<string | undefined>(
-    db.monographs.monograph(note.id)
+    db.shares.share(note.id)
   );
   const [isPasswordProtected, setIsPasswordProtected] = useState(false);
   const [selfDestruct, setSelfDestruct] = useState(false);
@@ -131,7 +131,7 @@ function PublishView(props: PublishViewProps) {
                     variant="text.body"
                     as="a"
                     target="_blank"
-                    href={`${hosts.MONOGRAPH_HOST}/${publishId}`}
+                    href={`${hosts.SHARE_HOST}/${publishId}`}
                     sx={{
                       textOverflow: "ellipsis",
                       whiteSpace: "nowrap",
@@ -140,13 +140,13 @@ function PublishView(props: PublishViewProps) {
                       mr: 2
                     }}
                   >
-                    {`${hosts.MONOGRAPH_HOST}/${publishId}`}
+                    {`${hosts.SHARE_HOST}/${publishId}`}
                   </Link>
                   <Button
                     variant="anchor"
                     className="copyPublishLink"
                     onClick={() => {
-                      writeText(`${hosts.MONOGRAPH_HOST}/${publishId}`);
+                      writeText(`${hosts.SHARE_HOST}/${publishId}`);
                     }}
                   >
                     <Copy size={20} color="accent" />
@@ -155,18 +155,18 @@ function PublishView(props: PublishViewProps) {
               </Flex>
             ) : (
               <Text variant="body" sx={{ color: "paragraph" }}>
-                {strings.monographDesc()}
+                {strings.shareDesc()}
               </Text>
             )}
             <Toggle
-              title={strings.monographSelfDestructHeading()}
-              tip={strings.monographSelfDestructDesc()}
+              title={strings.shareSelfDestructHeading()}
+              tip={strings.shareSelfDestructDesc()}
               isToggled={selfDestruct}
               onToggled={() => setSelfDestruct((s) => !s)}
             />
             <Toggle
-              title={strings.monographPassHeading()}
-              tip={strings.monographPassDesc()}
+              title={strings.sharePassHeading()}
+              tip={strings.sharePassDesc()}
               isToggled={isPasswordProtected}
               onToggled={() => setIsPasswordProtected((s) => !s)}
             />
