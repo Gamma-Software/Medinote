@@ -25,13 +25,13 @@ import { NotesScreenParams } from "../../stores/use-navigation-store";
 import { openSharesWebpage } from "./common";
 import { strings } from "@notesnook/intl";
 
-export const MONOGRAPH_PLACEHOLDER_DATA = {
+export const SHARE_PLACEHOLDER_DATA = {
   title: strings.yourShares(),
-  paragraph: strings.SharesEmpty(),
+  paragraph: strings.sharesEmpty(),
   button: strings.learnMoreShares(),
   action: openSharesWebpage,
   loading: strings.loadingShares(),
-  type: "monograph",
+  type: "share",
   buttonIcon: "information-outline"
 };
 
@@ -44,7 +44,7 @@ export const Shares = ({
       navigation={navigation}
       route={route}
       get={Shares.get}
-      placeholder={MONOGRAPH_PLACEHOLDER_DATA}
+      placeholder={SHARE_PLACEHOLDER_DATA}
       onPressFloatingButton={openSharesWebpage}
       canGoBack={route.params?.canGoBack}
       focusControl={true}
