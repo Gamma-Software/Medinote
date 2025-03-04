@@ -41,8 +41,7 @@ export const CipherStorage = new MMKVLoader()
   .disableIndexing()
   .initialize();
 
-const IOS_KEYCHAIN_ACCESS_GROUP = "group.org.streetwriters.notesnook";
-const IOS_KEYCHAIN_SERVICE_NAME = "org.streetwriters.notesnook";
+const IOS_KEYCHAIN_SERVICE_NAME = "com.leaptech.notesnook";
 const KEYCHAIN_SERVER_DBKEY = "notesnook:db";
 
 const NOTESNOOK_APPLOCK_KEY_SALT = "kBwr1Kre86ebOZ8ThLu2OA";
@@ -55,7 +54,6 @@ const APPLOCK_CIPHER = "applockCipher";
 const KEYSTORE_CONFIG = Platform.select({
   ios: {
     accessible: Keychain.ACCESSIBLE.WHEN_UNLOCKED_THIS_DEVICE_ONLY,
-    accessGroup: IOS_KEYCHAIN_ACCESS_GROUP,
     service: IOS_KEYCHAIN_SERVICE_NAME
   },
   android: {}

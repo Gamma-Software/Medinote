@@ -20,7 +20,7 @@
 			<string>Owner</string>
 			<key>LSItemContentTypes</key>
 			<array>
-				<string>org.streetwriters.notesnook.nnbackup</string>
+				<string>com.leaptech.notesnook.nnbackup</string>
 			</array>
 		</dict>
 	</array>
@@ -85,8 +85,6 @@
 	<string>Only required by library- not requested in application</string>
 	<key>NSPhotoLibraryUsageDescription</key>
 	<string>Add photos from gallery to your note.</string>
-	<key>ReactNativeQuickSQLite_AppGroup</key>
-	<string>group.org.streetwriters.notesnook</string>
 	<key>UIAppFonts</key>
 	<array>
 		<string>OpenSans-Italic.ttf</string>
@@ -137,7 +135,7 @@
 			<key>UTTypeIconFiles</key>
 			<array/>
 			<key>UTTypeIdentifier</key>
-			<string>org.streetwriters.notesnook.nnbackup</string>
+			<string>com.leaptech.notesnook.nnbackup</string>
 			<key>UTTypeTagSpecification</key>
 			<dict>
 				<key>public.filename-extension</key>
@@ -151,8 +149,6 @@
 			</dict>
 		</dict>
 	</array>
-	<key>appGroupId</key>
-	<string>group.org.streetwriters.notesnook</string>
 	<key>disableMMKVBackup</key>
 	<true/>
 </dict>
