@@ -42,14 +42,16 @@ if (theme) {
   if (stylesheet) stylesheet.innerHTML = css;
 } else stylesheet?.remove();
 
-const locale = import.meta.env.DEV
-  ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-  : import("@notesnook/intl/locales/$en.json");
+//const locale = import.meta.env.DEV
+//  ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+//  : import("@notesnook/intl/locales/$en.json");
+const locale = import("@notesnook/intl/locales/$fr.json");
 locale.then(({ default: locale }) => {
   i18n.load({
-    en: locale.messages as unknown as Messages
+    en: locale.messages as unknown as Messages,
+    fr: locale.messages as unknown as Messages
   });
-  i18n.activate("en");
+  i18n.activate("fr");
 
   performance.mark("import:root");
   import("@notesnook/web/src/root.js").then(({ startApp }) => {
@@ -57,4 +59,5 @@ locale.then(({ default: locale }) => {
     startApp(<App />);
   });
 });
+//@ts-ignore
 setI18nGlobal(i18n);

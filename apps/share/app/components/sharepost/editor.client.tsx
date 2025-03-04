@@ -32,15 +32,18 @@ import { ScopedThemeProvider } from "../theme-provider";
 import { setI18nGlobal, Messages } from "@notesnook/intl";
 import { i18n } from "@lingui/core";
 
-const locale = import.meta.env.DEV
-  ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-  : import("@notesnook/intl/locales/$fr.json");
+//const locale = import.meta.env.DEV
+//  ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+//  : import("@notesnook/intl/locales/$fr.json");
+const locale = import("@notesnook/intl/locales/$fr.json");
 locale.then(({ default: locale }) => {
   i18n.load({
+    en: locale.messages as unknown as Messages,
     fr: locale.messages as unknown as Messages
   });
   i18n.activate("fr");
 });
+//@ts-ignore
 setI18nGlobal(i18n);
 
 export type EditorType = typeof Editor;

@@ -39,15 +39,18 @@ import { disableCustomDns, enableCustomDns } from "./utils/custom-dns";
 import { Messages, setI18nGlobal } from "@notesnook/intl";
 import { i18n } from "@lingui/core";
 
-const locale =
-  process.env.NODE_ENV === "development"
-    ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-    : import("@notesnook/intl/locales/$en.json");
+//const locale =
+//  process.env.NODE_ENV === "development"
+//    ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+//    : import("@notesnook/intl/locales/$en.json");
+
+const locale = import("@notesnook/intl/locales/$fr.json");
 locale.then(({ default: locale }) => {
   i18n.load({
-    en: locale.messages as unknown as Messages
+    en: locale.messages as unknown as Messages,
+    fr: locale.messages as unknown as Messages
   });
-  i18n.activate("en");
+  i18n.activate("fr");
 });
 setI18nGlobal(i18n);
 

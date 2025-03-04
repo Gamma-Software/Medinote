@@ -28,12 +28,11 @@ import {
 
 
 i18n.load({
-  en: __DEV__ ? $pseudo : $en,
-  fr: __DEV__ ? $pseudo : $fr
+  en: $en,
+  fr: $fr
 });
 
-setI18nGlobal(i18n);
-i18n.activate("en");
+i18n.activate("fr");
 setI18nGlobal(i18n);
 
 if (global.__DEV__) {

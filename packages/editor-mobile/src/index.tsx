@@ -59,7 +59,7 @@ function loadApp() {
 
   locale.then(async (locale: { [name: string]: any }) => {
     i18n.load(locale);
-    i18n.activate(globalThis.LINGUI_LOCALE || "en");
+    i18n.activate(globalThis.LINGUI_LOCALE || "fr");
     //@ts-ignore
     setI18nGlobal(i18n);
 
