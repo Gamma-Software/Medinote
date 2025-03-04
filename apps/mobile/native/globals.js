@@ -19,10 +19,19 @@ import { ScriptManager, Script } from '@callstack/repack/client';
 import {
   messages as $en
 } from "@notesnook/intl/dist/locales/$en.json";
+import {
+  messages as $fr
+} from "@notesnook/intl/dist/locales/$fr.json";
+import {
+  messages as $pseudo
+} from "@notesnook/intl/dist/locales/$pseudo-LOCALE.json";
+
 
 i18n.load({
-  en: $en
+  en: __DEV__ ? $pseudo : $en,
+  fr: __DEV__ ? $pseudo : $fr
 });
+
 setI18nGlobal(i18n);
 i18n.activate("en");
 setI18nGlobal(i18n);
