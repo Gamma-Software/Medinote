@@ -55,6 +55,7 @@ class SettingStore extends BaseStore<SettingStore> {
   notificationsSettings = Config.get("notifications", { reminder: true });
   isFullOfflineMode = Config.get("fullOfflineMode", false);
   serverUrls: Partial<Record<HostId, string>> = Config.get("serverUrls", {});
+  locale = Config.get("locale", "en");
 
   zoomFactor = 1.0;
   privacyMode = false;
@@ -161,6 +162,11 @@ class SettingStore extends BaseStore<SettingStore> {
     Config.set("notifications", { ...notificationsSettings, ...settings });
 
     this.set({ notificationsSettings: Config.get("notifications") });
+  };
+
+  setLocale = (locale: string) => {
+    this.set({ locale });
+    Config.set("locale", locale);
   };
 
   toggleEncryptBackups = () => {

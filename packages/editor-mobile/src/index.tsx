@@ -27,6 +27,7 @@ import "@notesnook/editor/styles/styles.css";
 import { setI18nGlobal } from "@notesnook/intl";
 import { createRoot } from "react-dom/client";
 import "./index.css";
+import { useStore as useSettingStore } from "@notesnook/core/stores/setting-store";
 
 setTimeout(() => {
   if (globalThis.__DEV__) {
@@ -45,22 +46,22 @@ let appLoaded = false;
 function loadApp() {
   if (appLoaded) return;
   appLoaded = true;
-  const locale = globalThis.LINGUI_LOCALE_DATA
-    ? Promise.resolve(globalThis.LINGUI_LOCALE_DATA)
-    : globalThis.__DEV__ || process.env.NODE_ENV === "development"
-    ? import("@notesnook/intl/locales/$pseudo-LOCALE.json").then(
-        ({ default: locale }) => ({ en: locale.messages })
-      )
-    : import("@notesnook/intl/locales/$en.json").then(
-        ({ default: locale }) => ({
-          en: locale.messages
-        })
-      );
 
-  locale.then(async (locale: { [name: string]: any }) => {
-    i18n.load(locale);
-    i18n.activate(globalThis.LINGUI_LOCALE || "en");
-    //@ts-ignore
+  const locales = {
+    fr: import("@notesnook/intl/locales/$fr.json"),
+    en: import("@notesnook/intl/locales/$en.json"),
+    pseudo: import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+  };
+
+  Promise.all(
+    Object.entries(locales).map(async ([lang, module]) => {
+      const { default: locale } = await module;
+      return [lang, locale.messages];
+    })
+  ).then((results) => {
+    const messages = Object.fromEntries(results);
+    i18n.load(messages);
+    i18n.activate(useSettingStore.getState().locale || "en");
     setI18nGlobal(i18n);
 
     const rootElement = document.getElementById("root");

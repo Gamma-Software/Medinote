@@ -23,6 +23,7 @@ import {
   About,
   Account,
   Appearance,
+  Locale,
   Backup,
   Behaviour,
   CellphoneLock,
@@ -76,6 +77,7 @@ import { ScopedThemeProvider } from "../../components/theme-provider";
 import { AppLockSettings } from "./app-lock-settings";
 import { BaseDialogProps, DialogManager } from "../../common/dialog-manager";
 import { ServersSettings } from "./servers-settings";
+import { LocaleSettings } from "./locale-settings";
 import { strings } from "@notesnook/intl";
 import { mdToHtml } from "../../utils/md";
 
@@ -114,6 +116,7 @@ const sectionGroups: SectionGroup[] = [
     title: strings.customization(),
     sections: [
       { key: "appearance", title: strings.appearance(), icon: Appearance },
+      { key: "locale", title: strings.languages(), icon: Locale },
       { key: "behaviour", title: strings.behaviour(), icon: Behaviour },
       { key: "editor", title: strings.editor(), icon: Editor },
       {
@@ -163,6 +166,7 @@ const SettingsGroups = [
   ...AuthenticationSettings,
   ...SyncSettings,
   ...AppearanceSettings,
+  ...LocaleSettings,
   ...BehaviourSettings,
   ...DesktopIntegrationSettings,
   ...NotificationsSettings,

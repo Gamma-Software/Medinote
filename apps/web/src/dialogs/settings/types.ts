@@ -25,6 +25,7 @@ export type SectionKeys =
   | "subscription"
   | "sync"
   | "appearance"
+  | "locale"
   | "behaviour"
   | "desktop"
   | "notifications"

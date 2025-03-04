@@ -25,16 +25,16 @@ import {
 import {
   messages as $pseudo
 } from "@notesnook/intl/dist/locales/$pseudo-LOCALE.json";
-
+import { useStore as useSettingStore } from "@notesnook/core/stores/setting-store";
 
 i18n.load({
-  en: __DEV__ ? $pseudo : $en,
-  fr: __DEV__ ? $pseudo : $fr
+  en: $en,
+  fr: $fr,
+  pseudo: $pseudo
 });
 
 setI18nGlobal(i18n);
-i18n.activate("en");
-setI18nGlobal(i18n);
+i18n.activate(useSettingStore.getState().locale || "en"); // Default to English
 
 if (global.__DEV__) {
   const err = console.error;

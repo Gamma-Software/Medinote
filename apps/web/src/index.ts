@@ -27,6 +27,7 @@ import { ThemeDark, ThemeLight, themeToCSS } from "@notesnook/theme";
 import Config from "./utils/config";
 import { setI18nGlobal, Messages } from "@notesnook/intl";
 import { i18n } from "@lingui/core";
+import { useStore as useSettingStore } from "./stores/setting-store";
 
 const colorScheme = JSON.parse(
   window.localStorage.getItem("colorScheme") || '"light"'
@@ -44,21 +45,27 @@ if (theme) {
   if (stylesheet) stylesheet.innerHTML = css;
 } else stylesheet?.remove();
 
-const locale = import.meta.env.DEV
-  ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-  : import("@notesnook/intl/locales/$en.json");
-locale.then(({ default: locale }) => {
-  i18n.load({
-    en: locale.messages as unknown as Messages
-  });
-  i18n.activate("en");
+const locales = {
+  en: import("@notesnook/intl/locales/$en.json"),
+  fr: import("@notesnook/intl/locales/$fr.json"),
+  pseudo: import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+};
+Promise.all([locales.en, locales.fr, locales.pseudo]).then(
+  ([en, fr, pseudo]) => {
+    i18n.load({
+      en: en.default.messages as unknown as Messages,
+      fr: fr.default.messages as unknown as Messages,
+      pseudo: pseudo.default.messages as unknown as Messages
+    });
+    i18n.activate(useSettingStore.getState().locale || "en"); // Default to English if no locale specified
 
-  performance.mark("import:root");
-  import("./root").then(({ startApp }) => {
-    performance.mark("start:app");
-    startApp();
-  });
-});
+    performance.mark("import:root");
+    import("./root").then(({ startApp }) => {
+      performance.mark("start:app");
+      startApp();
+    });
+  }
+);
 setI18nGlobal(i18n);
 
 if (!IS_DESKTOP_APP && !IS_TESTING) {

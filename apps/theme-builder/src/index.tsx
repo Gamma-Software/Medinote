@@ -25,6 +25,7 @@ import Config from "@notesnook/web/src/utils/config";
 import { setI18nGlobal, Messages } from "@notesnook/intl";
 import { i18n } from "@lingui/core";
 import { App } from "./app";
+import { useStore as useSettingStore } from "@notesnook/core/stores/setting-store";
 
 const colorScheme = JSON.parse(
   window.localStorage.getItem("colorScheme") || '"light"'
@@ -42,14 +43,21 @@ if (theme) {
   if (stylesheet) stylesheet.innerHTML = css;
 } else stylesheet?.remove();
 
-const locale = import.meta.env.DEV
-  ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-  : import("@notesnook/intl/locales/$en.json");
-locale.then(({ default: locale }) => {
-  i18n.load({
-    en: locale.messages as unknown as Messages
-  });
-  i18n.activate("en");
+const locales = {
+  fr: import("@notesnook/intl/locales/$fr.json"),
+  en: import("@notesnook/intl/locales/$en.json"),
+  pseudo: import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+};
+
+Promise.all(
+  Object.entries(locales).map(async ([lang, module]) => {
+    const { default: locale } = await module;
+    return [lang, locale.messages];
+  })
+).then((results) => {
+  const messages = Object.fromEntries(results);
+  i18n.load(messages as Record<string, Messages>);
+  i18n.activate(useSettingStore.getState().locale || "en"); // Default to english
 
   performance.mark("import:root");
   import("@notesnook/web/src/root.js").then(({ startApp }) => {
@@ -57,4 +65,5 @@ locale.then(({ default: locale }) => {
     startApp(<App />);
   });
 });
+
 setI18nGlobal(i18n);

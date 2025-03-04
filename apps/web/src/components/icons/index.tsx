@@ -193,6 +193,7 @@ import {
   mdiFileDocumentOutline,
   mdiFileVideoOutline,
   mdiWeb,
+  mdiTranslateVariant,
   mdiUploadOutline,
   mdiLinkOff,
   mdiMagnifyPlusOutline,
@@ -540,6 +541,7 @@ export const Reset = createIcon(mdiRestore);
 export const Account = createIcon(mdiAccountOutline);
 export const PasswordAndAuth = createIcon(mdiKeyOutline);
 export const Appearance = createIcon(mdiPaletteSwatchOutline);
+export const Locale = createIcon(mdiTranslateVariant);
 export const Import = createIcon(mdiDatabaseImportOutline);
 export const Privacy = createIcon(mdiEyeOffOutline);
 export const Developer = createIcon(mdiDeveloperBoard);

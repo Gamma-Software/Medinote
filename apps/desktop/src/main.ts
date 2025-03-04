@@ -38,17 +38,25 @@ import { setupDesktopIntegration } from "./utils/desktop-integration";
 import { disableCustomDns, enableCustomDns } from "./utils/custom-dns";
 import { Messages, setI18nGlobal } from "@notesnook/intl";
 import { i18n } from "@lingui/core";
+import { getLocale, setLocale } from "./utils/locale";
 
-const locale =
-  process.env.NODE_ENV === "development"
-    ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-    : import("@notesnook/intl/locales/$en.json");
-locale.then(({ default: locale }) => {
-  i18n.load({
-    en: locale.messages as unknown as Messages
-  });
-  i18n.activate("en");
+const locales = {
+  fr: import("@notesnook/intl/locales/$fr.json"),
+  en: import("@notesnook/intl/locales/$en.json"),
+  pseudo: import("@notesnook/intl/locales/$pseudo-LOCALE.json")
+};
+
+Promise.all(
+  Object.entries(locales).map(async ([lang, module]) => {
+    const { default: locale } = await module;
+    return [lang, locale.messages];
+  })
+).then((results) => {
+  const messages = Object.fromEntries(results);
+  i18n.load(messages as Record<string, Messages>);
+  i18n.activate(getLocale() || "en"); // Default to english
 });
+
 setI18nGlobal(i18n);
 
 // only run a single instance

@@ -27,13 +27,15 @@ export const DesktopIntegration = z.object({
   startMinimized: z.boolean().optional(),
   minimizeToSystemTray: z.boolean().optional(),
   closeToSystemTray: z.boolean().optional(),
-  nativeTitlebar: z.boolean().optional()
+  nativeTitlebar: z.boolean().optional(),
+  locale: z.string().optional()
 });
 
 export type DesktopIntegration = z.infer<typeof DesktopIntegration>;
 
 export const config = {
   desktopSettings: <DesktopIntegration>{
+    locale: "en",
     autoStart: false,
     startMinimized: false,
     minimizeToSystemTray: false,

@@ -58,6 +58,7 @@ export type Settings = {
   reduceAnimations?: boolean;
   rateApp?: boolean | number;
   migrated?: boolean;
+  locale?: string;
   introCompleted?: boolean;
   nextBackupRequestTime?: number;
   lastBackupDate?: number;
@@ -119,6 +120,8 @@ export interface SettingStore extends State {
   isAppLoading: boolean;
   setAppLoading: (isAppLoading: boolean) => void;
   setSheetKeyboardHandler: (sheetKeyboardHandler: boolean) => void;
+  locale: string;
+  setLocale: (locale: string) => void;
   sheetKeyboardHandler: boolean;
   requestBiometrics: boolean;
   setRequestBiometrics: (requestBiometrics: boolean) => void;
@@ -153,6 +156,7 @@ export const defaultSettings: SettingStore["settings"] = {
   homepage: "Notes",
   sort: "default",
   sortOrder: "desc",
+  locale: "en",
   screenshotMode: true,
   privacyScreen: false,
   appLockMode: "none",
@@ -211,6 +215,8 @@ export const useSettingStore = create<SettingStore>((set, get) => ({
   requestBiometrics: false,
   setRequestBiometrics: (requestBiometrics) => set({ requestBiometrics }),
   setInsets: (insets) => set({ insets }),
+  locale: "en",
+  setLocale: (locale) => set({ locale }),
   timeFormat: "12-hour",
   dateFormat: "DD-MM-YYYY",
   setAppDidEnterBackgroundForAction: (value: boolean) => {
