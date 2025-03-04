@@ -1,13 +1,13 @@
 ---
-title: Monographs
+title: Shares
 description: Anonymous, secure and encrypted note sharing with password protection. Share a note with anyone on the internet even if they do not use Notesnook.
 ---
 
-# Publish notes with monographs
+# Publish notes with Shares
 
 Sharing a note with someone can be such a tedious task. You have to copy/download/export it to a file and then attach it in an email or upload it to some cloud storage.
 
-With Notesnook, you don't need to do that anymore. Monographs enable you to share your notes with anyone in a single click. Once a note is published as a monograph, you get a public URL which you can share with anyone. They don't need to download Notesnook or install any extra software — it's just like a blog, only simpler.
+With Notesnook, you don't need to do that anymore. Shares enable you to share your notes with anyone in a single click. Once a note is published as a share, you get a public URL which you can share with anyone. They don't need to download Notesnook or install any extra software — it's just like a blog, only simpler.
 
 ## How to publish a note?
 
@@ -29,13 +29,13 @@ With Notesnook, you don't need to do that anymore. Monographs enable you to shar
 
 ## Password protection
 
-When you are sharing sensitive information with someone, you can encrypt the monograph with a password. Only someone who has the password can decrypt and read the contents of the note. While you are on the Publish note dialog, turn on password protection and enter a password for the monograph. Then click publish to publish the note.
+When you are sharing sensitive information with someone, you can encrypt the share with a password. Only someone who has the password can decrypt and read the contents of the note. While you are on the Publish note dialog, turn on password protection and enter a password for the share. Then click publish to publish the note.
 
 ## Self destruct
 
-Self destruct means that the published note can be viewed only once. Once someone visits the public URL to see the contents of the note, the monograph is deleted and it cannot be viewed again.
+Self destruct means that the published note can be viewed only once. Once someone visits the public URL to see the contents of the note, the share is deleted and it cannot be viewed again.
 
-## Unpublish a monograph
+## Unpublish a share
 
 # [Desktop/Web](#/tab/web)
 

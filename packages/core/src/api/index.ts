@@ -35,7 +35,7 @@ import { LegacySettings } from "../collections/legacy-settings.js";
 import Migrations from "./migrations.js";
 import UserManager from "./user-manager.js";
 import http from "../utils/http.js";
-import { Monographs } from "./monographs.js";
+import { Shares } from "./shares.js";
 import { Offers } from "./offers.js";
 import { Attachments } from "../collections/attachments.js";
 import { Debug } from "./debug.js";
@@ -199,7 +199,7 @@ class Database {
   lookup = new Lookup(this);
   backup = new Backup(this);
   migrations = new Migrations(this);
-  monographs = new Monographs(this);
+  shares = new Shares(this);
   trash = new Trash(this);
   sanitizer = new Sanitizer(this.sql);
 
@@ -286,7 +286,7 @@ class Database {
       await this.fs().cancel(attachment.hash);
     });
     EV.subscribe(EVENTS.userLoggedOut, async () => {
-      await this.monographs.clear();
+      await this.shares.clear();
       await this.fs().clear();
       this.disconnectSSE();
     });
@@ -339,7 +339,7 @@ class Database {
 
     // we must not wait on network requests that's why
     // no await
-    this.monographs.refresh().catch(logger.error);
+    this.shares.refresh().catch(logger.error);
   }
 
   disconnectSSE() {

@@ -90,7 +90,7 @@ export const useActions = ({
   const [noteInCurrentNotebook, setNoteInCurrentNotebook] = useState(false);
 
   const isPublished =
-    item.type === "note" && db.monographs.isPublished(item.id);
+    item.type === "note" && db.shares.isPublished(item.id);
   const [locked, setLocked] = useState(false);
 
   useEffect(() => {

@@ -35,7 +35,7 @@ const SEARCH_IN_ROUTE_STRINGS = {
   Editor: () => t`Search in Editor`,
   Home: () => t`Search in Home`,
   Search: () => t`Search in Search`,
-  Monographs: () => t`Search in Monographs`
+  Shares: () => t`Search in Shares`
 };
 
 const TRANSACTION_STATUS = {
@@ -261,15 +261,15 @@ export const strings = {
   downloadingAttachments: () => t`Downloading attachments`,
   pleaseWait: () => t`Please wait`,
   publishedAt: () => t`Published at`,
-  monographDesc: () => t`This note will be published to a public URL.`,
+  shareDesc: () => t`This note will be published to a public URL.`,
   openInBrowser: () => t`Open in browser`,
-  monographPassHeading: () => t`Password protection`,
-  monographPassDesc: () =>
+  sharePassHeading: () => t`Password protection`,
+  sharePassDesc: () =>
     t`Published note can only be viewed by someone with the password.`,
-  monographSelfDestructHeading: () => t`Self destruct`,
-  monographSelfDestructDesc: () =>
+  shareSelfDestructHeading: () => t`Self destruct`,
+  shareSelfDestructDesc: () =>
     t`Published note link will be automatically deleted once it is viewed by someone.`,
-  monographLearnMore: () => t`Learn more about Notesnook Monograph`,
+  shareLearnMore: () => t`Learn more about Notesnook Share`,
   rateAppHeading: () => t`Do you enjoy using Notesnook?`,
   rateAppDesc: () =>
     t`It took us a year to bring Notesnook to life. Share your experience and suggestions to help us improve it.`,
@@ -319,7 +319,7 @@ export const strings = {
     color: () => t`Colors`,
     attachment: () => t`Attachments`,
     favorite: () => t`Favorites`,
-    monograph: () => t`Monographs`,
+    share: () => t`Shares`,
     item: () => t`Items`,
     shortcut: () => t`Shortcuts`
   },
@@ -855,7 +855,7 @@ $headline$: Use starting line of the note as title.`,
   failedToPublish: () => t`Failed to publish note`,
   failedToUnpublish: () => t`Failed to unpublish note`,
   notePublished: () => actions.published.note(1),
-  monographUrlCopied: () => t`Monograph URL copied`,
+  shareUrlCopied: () => t`Share URL copied`,
   recoveryKeySaved: () => t`Did you save recovery key?`,
   recoveryKeySavedDesc: () =>
     t`Please make sure you have saved the recovery key. Tap one more time to confirm.`,
@@ -923,7 +923,7 @@ $headline$: Use starting line of the note as title.`,
   moveNotebookFix: () => t`Move notebook`,
   failedToSubscribe: () => t`Failed to subscribe`,
   createNewNote: () => t`Create a new note`,
-  monographs: () => t`Monographs`,
+  shares: () => t`Shares`,
   encryptingAttachment: () => t`Encrypting attachment`,
   encryptingAttachmentDesc: (name = "attachment") =>
     t`Please wait while we encrypt ${name} for upload.`,
@@ -943,23 +943,23 @@ $headline$: Use starting line of the note as title.`,
   yourTags: () => t`Your tags`,
   yourNotebooks: () => t`Your notebooks`,
   yourReminders: () => t`Your reminders`,
-  yourMonographs: () => t`Your monographs`,
+  yourShares: () => t`Your shares`,
   favoritesEmpty: () => t`You have not favorited any notes yet`,
   notesEmpty: () => t`You have not created any notes yet`,
   tagsEmpty: () => t`You have not added any tags yet`,
   notebooksEmpty: () => t`You have not added any notebooks yet`,
   remindersEmpty: () => t`You have not set any reminders yet`,
-  monographsEmpty: () => t`You have not published any monographs yet`,
+  sharesEmpty: () => t`You have not published any shares yet`,
   loadingFavorites: () => t`Loading your favorites`,
   loadingNotes: () => t`Loading your notes`,
   loadingTags: () => t`Loading your tags`,
   loadingNotebooks: () => t`Loading your notebooks`,
   loadingReminders: () => t`Loading your reminders`,
-  loadingMonographs: () => t`Loading your monographs`,
+  loadingShares: () => t`Loading your shares`,
   addFirstNote: () => t`Add your first note`,
   addFirstNotebook: () => t`Add your first notebook`,
   setReminder: () => t`Set a reminder`,
-  learnMoreMonographs: () => t`Learn more about Monographs`,
+  learnMoreShares: () => t`Learn more about Shares`,
   mfaAuthAppTitle: () => t`Setup using an Authenticator app`,
   mfaAuthAppDesc: () => t`Use an authenticator app to generate 2FA codes.`,
   mfaAuthAppSubtitle: () =>
@@ -1396,13 +1396,13 @@ $headline$: Use starting line of the note as title.`,
     },
     {
       text: () =>
-        t`Monographs enable you to share your notes in a secure and private way.`,
-      contexts: ["monographs"]
+        t`Shares enable you to share your notes in a secure and private way.`,
+      contexts: ["shares"]
     },
     {
       text: () =>
-        t`Monographs can be encrypted with a secret key and shared with anyone.`,
-      contexts: ["monographs"]
+        t`Shares can be encrypted with a secret key and shared with anyone.`,
+      contexts: ["shares"]
     },
     {
       text: () =>
@@ -1508,7 +1508,7 @@ For example:
     Editor: () => t`Editor`,
     Home: () => t`Home`,
     Search: () => t`Search`,
-    Monographs: () => t`Monographs`
+    Shares: () => t`Shares`
   },
   searchInRoute: (
     routeName: keyof typeof SEARCH_IN_ROUTE_STRINGS | ({} & string)
@@ -1609,8 +1609,8 @@ For example:
   sseServer: () => t`Events server`,
   sseServerDesc: () =>
     t`Server used to receive important notifications & events.`,
-  monographServer: () => t`Monograph server`,
-  monographServerDesc: () => t`Server used to host your published notes.`,
+  shareServer: () => t`Share server`,
+  shareServerDesc: () => t`Server used to host your published notes.`,
   logoutToChangeServerUrls: () =>
     t`You must log out in order to change/reset server URLs.`,
   enterValidUrl: () => t`Please enter a valid URL`,

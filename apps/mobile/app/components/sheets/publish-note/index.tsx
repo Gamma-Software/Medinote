@@ -54,8 +54,8 @@ const PublishNoteSheet = ({
   const [note, setNote] = useState<Note | undefined>(item);
   const [publishing, setPublishing] = useState(false);
   const publishUrl =
-    note && `${hosts.MONOGRAPH_HOST}/${db.monographs.monograph(note?.id)}`;
-  const isPublished = note && db.monographs.isPublished(note?.id);
+    note && `${hosts.SHARES_HOST}/${db.shares.share(note?.id)}`;
+  const isPublished = note && db.shares.isPublished(note?.id);
   const pwdInput = useRef(null);
   const passwordValue = useRef<string>();
 
@@ -66,7 +66,7 @@ const PublishNoteSheet = ({
     try {
       if (note?.id) {
         if (isLocked && !passwordValue.current) return;
-        await db.monographs.publish(note.id, {
+        await db.shares.publish(note.id, {
           selfDestruct: selfDestruct,
           password: isLocked ? passwordValue.current : undefined
         });
@@ -96,7 +96,7 @@ const PublishNoteSheet = ({
     setPublishLoading(true);
     try {
       if (note?.id) {
-        await db.monographs.unpublish(note.id);
+        await db.shares.unpublish(note.id);
         setNote(await db.notes.note(note.id));
         Navigation.queueRoutesForUpdate();
         setPublishLoading(false);
@@ -354,7 +354,7 @@ const PublishNoteSheet = ({
         onPress={async () => {
           try {
             await openLinkInBrowser(
-              "https://help.notesnook.com/publish-notes-with-monographs"
+              "https://help.notesnook.com/publish-notes-with-shares"
             );
           } catch (e) {
             console.error(e);

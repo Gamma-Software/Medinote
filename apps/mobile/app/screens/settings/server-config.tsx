@@ -80,9 +80,9 @@ const SERVERS: Server[] = [
   {
     id: "monograph",
     host: "MONOGRAPH_HOST",
-    title: strings.monographServer(),
+    title: strings.shareServer(),
     example: "http://localhost:6326",
-    description: strings.monographServerDesc(),
+    description: strings.shareServerDesc(),
     versionEndpoint: "/api/version"
   }
 ];

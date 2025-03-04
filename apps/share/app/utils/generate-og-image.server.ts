@@ -116,7 +116,7 @@ export async function makeImage(metadata: OGMetadata, cacheKey: string) {
   // Draw bottom text
   ctx.fillStyle = theme.primary.heading;
   ctx.font = "600 32px OpenSansBold";
-  ctx.fillText("Notesnook Monograph", PADDING + 95, HEIGHT - PADDING - 55);
+  ctx.fillText("Notesnook Share", PADDING + 95, HEIGHT - PADDING - 55);
 
   ctx.fillStyle = theme.secondary.paragraph;
   ctx.font = "25px OpenSans";

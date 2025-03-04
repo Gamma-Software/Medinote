@@ -25,28 +25,28 @@ import { Cipher } from "@notesnook/crypto";
 import { isFalse } from "../database/index.js";
 import { logger } from "../logger.js";
 
-type BaseMonograph = {
+type BaseShare = {
   id: string;
   title: string;
   userId: string;
   selfDestruct: boolean;
 };
-type UnencryptedMonograph = BaseMonograph & {
+type UnencryptedShare = BaseShare & {
   content: string;
 };
-type EncryptedMonograph = BaseMonograph & {
+type EncryptedShare = BaseShare & {
   encryptedContent: Cipher<"base64">;
 };
-type Monograph = UnencryptedMonograph | EncryptedMonograph;
+type Share = UnencryptedShare | EncryptedShare;
 
 export type PublishOptions = { password?: string; selfDestruct?: boolean };
-export class Monographs {
-  monographs: string[] = [];
+export class Shares {
+  shares: string[] = [];
   constructor(private readonly db: Database) {}
 
   async clear() {
-    this.monographs = [];
-    await this.db.kv().write("monographs", this.monographs);
+    this.shares = [];
+    await this.db.kv().write("shares", this.shares);
   }
 
   async refresh() {
@@ -55,14 +55,11 @@ export class Monographs {
       const token = await this.db.tokenManager.getAccessToken();
       if (!user || !token || !user.isEmailConfirmed) return;
 
-      const monographs = await http.get(
-        `${Constants.API_HOST}/monographs`,
-        token
-      );
-      await this.db.kv().write("monographs", monographs);
-      if (monographs) this.monographs = monographs;
+      const shares = await http.get(`${Constants.API_HOST}/shares`, token);
+      await this.db.kv().write("shares", shares);
+      if (shares) this.shares = shares;
     } catch (e) {
-      logger.error(e, "Error while refreshing monographs.");
+      logger.error(e, "Error while refreshing shares.");
     }
   }
 
@@ -70,21 +67,21 @@ export class Monographs {
    * Check if note is published.
    */
   isPublished(noteId: string) {
-    return this.monographs && this.monographs.indexOf(noteId) > -1;
+    return this.shares && this.shares.indexOf(noteId) > -1;
   }
 
   /**
-   * Get note published monograph id
+   * Get note published share id
    */
-  monograph(noteId: string) {
-    return this.monographs[this.monographs.indexOf(noteId)];
+  share(noteId: string) {
+    return this.shares[this.shares.indexOf(noteId)];
   }
 
   /**
-   * Publish a note as a monograph
+   * Publish a note as a share
    */
   async publish(noteId: string, opts: PublishOptions = {}) {
-    if (!this.monographs.length) await this.refresh();
+    if (!this.shares.length) await this.refresh();
 
     const update = !!this.isPublished(noteId);
 
@@ -104,12 +101,12 @@ export class Monographs {
     if (contentItem.locked) throw new Error("Cannot published locked notes.");
 
     const content = await this.db.content.downloadMedia(
-      `monograph-${noteId}`,
+      `share-${noteId}`,
       contentItem,
       false
     );
 
-    const monograph: Monograph = {
+    const share: Share = {
       id: noteId,
       title: note.title,
       userId: user.id,
@@ -133,13 +130,9 @@ export class Monographs {
 
     const method = update ? http.patch.json : http.post.json;
 
-    const { id } = await method(
-      `${Constants.API_HOST}/monographs`,
-      monograph,
-      token
-    );
+    const { id } = await method(`${Constants.API_HOST}/shares`, share, token);
 
-    this.monographs.push(id);
+    this.shares.push(id);
     return id;
   }
 
@@ -147,7 +140,7 @@ export class Monographs {
    * Unpublish a note
    */
   async unpublish(noteId: string) {
-    if (!this.monographs.length) await this.refresh();
+    if (!this.shares.length) await this.refresh();
 
     const user = await this.db.user.getUser();
     const token = await this.db.tokenManager.getAccessToken();
@@ -156,9 +149,9 @@ export class Monographs {
     if (!this.isPublished(noteId))
       throw new Error("This note is not published.");
 
-    await http.delete(`${Constants.API_HOST}/monographs/${noteId}`, token);
+    await http.delete(`${Constants.API_HOST}/shares/${noteId}`, token);
 
-    this.monographs.splice(this.monographs.indexOf(noteId), 1);
+    this.shares.splice(this.shares.indexOf(noteId), 1);
   }
 
   get all() {
@@ -167,12 +160,12 @@ export class Monographs {
         qb
           .where(isFalse("dateDeleted"))
           .where(isFalse("deleted"))
-          .where("id", "in", this.monographs),
+          .where("id", "in", this.shares),
       this.db.options?.batchSize
     );
   }
 
-  get(monographId: string) {
-    return http.get(`${Constants.API_HOST}/monographs/${monographId}`);
+  get(shareId: string) {
+    return http.get(`${Constants.API_HOST}/shares/${shareId}`);
   }
 }

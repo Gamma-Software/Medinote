@@ -57,8 +57,8 @@ export type Item =
   | TagType
   | TrashType;
 
-export type MonographType = {
-  type: "monograph";
+export type ShareType = {
+  type: "share";
   id: string;
   title: string;
   dateModified: number;

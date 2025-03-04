@@ -157,7 +157,7 @@ const invalidKeys = [
   "vaultKey",
   "hasConflict",
   "token",
-  "monographs"
+  "shares"
 ];
 
 const itemTypeToCollectionKey = {
