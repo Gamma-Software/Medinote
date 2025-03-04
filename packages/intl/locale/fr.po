@@ -5345,8 +5345,8 @@ msgid "Select the folder that includes your backup files to list them here."
 msgstr "Sélectionnez le dossier contenant vos fichiers de sauvegarde pour les lister ici."
 
 #: src/strings.ts:2111
-msgid "Select the languages the spell checker should check in."
-msgstr "Sélectionnez les langues que le correcteur orthographique doit vérifier."
+msgid "Select the languages the spell checker should check in. (The app will restart)"
+msgstr "Sélectionnez les langues que le correcteur orthographique doit vérifier. (L'application va redémarrer après la sélection du paramètre)"
 
 #: src/strings.ts:2438
 msgid "Select the release track for Notesnook."
