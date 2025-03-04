@@ -841,6 +841,7 @@ msgstr "L'application se recharge dans {sec} secondes"
 #: src/strings.ts:1099
 msgid "Appearance"
 msgstr "Apparence"
+
 #: src/strings.ts:530
 msgid "Applied as dark theme"
 msgstr "Appliquée en thème sombre"
@@ -3356,6 +3357,7 @@ msgstr "Lien vers le carnet"
 #: src/strings.ts:586
 msgid "Linked notes"
 msgstr "Notes liées"
+
 #: src/strings.ts:1577
 msgid "Linking to a specific block is not available for locked notes."
 msgstr "La liaison à un bloc spécifique n'est pas disponible pour les notes verrouillées."
@@ -3771,6 +3773,7 @@ msgstr "Le plus récent - le plus ancien"
 #: src/strings.ts:1125
 msgid "Newly created notes will be uncategorized"
 msgstr "Les nouvelles notes créées seront non catégorisées"
+
 #: src/strings.ts:543
 msgid "Next"
 msgstr "Suivant"
@@ -4764,6 +4767,7 @@ msgstr "Me le rappeler dans"
 #: src/strings.ts:1488
 msgid "Remind me of..."
 msgstr "Me rappeler de..."
+
 #: src/strings.ts:288
 msgid "reminder"
 msgstr "rappel"
@@ -5885,7 +5889,7 @@ msgstr "Prendre une photo avec l'appareil photo"
 msgid "Take note"
 msgstr "Prendre note"
 
-#: src/strings.ts:1635
+#: src/strings.ts:1637
 msgid "Take notes privately."
 msgstr "Prenez des notes en privé."
 

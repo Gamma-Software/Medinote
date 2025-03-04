@@ -3282,23 +3282,13 @@ msgstr "Learn how this works."
 msgid "Learn more"
 msgstr "Learn more"
 
-<<<<<<< HEAD
-#: src/strings.ts:962
-msgid "Learn more about Monographs"
-msgstr "Learn more about Monographs"
-
-#: src/strings.ts:272
-msgid "Learn more about Notesnook Monograph"
-msgstr "Learn more about Notesnook Monograph"
-=======
 #: src/strings.ts:272
 msgid "Learn more about Notesnook Share"
-msgstr ""
+msgstr "Learn more about Notesnook Share"
 
 #: src/strings.ts:962
 msgid "Learn more about Shares"
-msgstr ""
->>>>>>> feature/rename-monograph-to-shares
+msgstr "Learn more about Shares"
 
 #: src/strings.ts:1543
 msgid "Legal"
@@ -3409,13 +3399,6 @@ msgstr "Loading trash"
 msgid "Loading your favorites"
 msgstr "Loading your favorites"
 
-<<<<<<< HEAD
-#: src/strings.ts:958
-msgid "Loading your monographs"
-msgstr "Loading your monographs"
-
-=======
->>>>>>> feature/rename-monograph-to-shares
 #: src/strings.ts:956
 msgid "Loading your notebooks"
 msgstr "Loading your notebooks"
@@ -3430,7 +3413,7 @@ msgstr "Loading your reminders"
 
 #: src/strings.ts:958
 msgid "Loading your shares"
-msgstr ""
+msgstr "Loading your shares"
 
 #: src/strings.ts:955
 msgid "Loading your tags"
@@ -3638,31 +3621,6 @@ msgstr "Mon"
 msgid "Monday"
 msgstr "Monday"
 
-<<<<<<< HEAD
-#: src/strings.ts:1612
-msgid "Monograph server"
-msgstr "Monograph server"
-
-#: src/strings.ts:858
-msgid "Monograph URL copied"
-msgstr "Monograph URL copied"
-
-#: src/strings.ts:322
-#: src/strings.ts:926
-#: src/strings.ts:1511
-msgid "Monographs"
-msgstr "Monographs"
-
-#: src/strings.ts:1404
-msgid "Monographs can be encrypted with a secret key and shared with anyone."
-msgstr "Monographs can be encrypted with a secret key and shared with anyone."
-
-#: src/strings.ts:1399
-msgid "Monographs enable you to share your notes in a secure and private way."
-msgstr "Monographs enable you to share your notes in a secure and private way."
-
-=======
->>>>>>> feature/rename-monograph-to-shares
 #: src/strings.ts:1821
 msgid "month"
 msgstr "month"
@@ -5234,13 +5192,6 @@ msgstr "Search in Favorites"
 msgid "Search in Home"
 msgstr "Search in Home"
 
-<<<<<<< HEAD
-#: src/strings.ts:38
-msgid "Search in Monographs"
-msgstr "Search in Monographs"
-
-=======
->>>>>>> feature/rename-monograph-to-shares
 #: src/strings.ts:29
 msgid "Search in Notebook"
 msgstr "Search in Notebook"
@@ -5267,7 +5218,7 @@ msgstr "Search in Settings"
 
 #: src/strings.ts:38
 msgid "Search in Shares"
-msgstr ""
+msgstr "Search in Shares"
 
 #: src/strings.ts:34
 msgid "Search in Tags"
@@ -5605,7 +5556,7 @@ msgstr "Share Notesnook with friends!"
 
 #: src/strings.ts:1612
 msgid "Share server"
-msgstr ""
+msgstr "Share server"
 
 #: src/strings.ts:585
 msgid "Share to cloud"
@@ -5613,21 +5564,21 @@ msgstr "Share to cloud"
 
 #: src/strings.ts:858
 msgid "Share URL copied"
-msgstr ""
+msgstr "Share URL copied"
 
 #: src/strings.ts:322
 #: src/strings.ts:926
 #: src/strings.ts:1511
 msgid "Shares"
-msgstr ""
+msgstr "Shares"
 
 #: src/strings.ts:1404
 msgid "Shares can be encrypted with a secret key and shared with anyone."
-msgstr ""
+msgstr "Shares can be encrypted with a secret key and shared with anyone."
 
 #: src/strings.ts:1399
 msgid "Shares enable you to share your notes in a secure and private way."
-msgstr ""
+msgstr "Shares enable you to share your notes in a secure and private way."
 
 #: src/strings.ts:292
 msgid "shortcut"
@@ -6892,13 +6843,8 @@ msgid "You have not favorited any notes yet"
 msgstr "You have not favorited any notes yet"
 
 #: src/strings.ts:952
-<<<<<<< HEAD
-msgid "You have not published any monographs yet"
-msgstr "You have not published any monographs yet"
-=======
 msgid "You have not published any shares yet"
-msgstr ""
->>>>>>> feature/rename-monograph-to-shares
+msgstr "You have not published any shares yet"
 
 #: src/strings.ts:951
 msgid "You have not set any reminders yet"
@@ -7025,13 +6971,6 @@ msgstr "Your free trial is ending soon"
 msgid "Your full name"
 msgstr "Your full name"
 
-<<<<<<< HEAD
-#: src/strings.ts:946
-msgid "Your monographs"
-msgstr "Your monographs"
-
-=======
->>>>>>> feature/rename-monograph-to-shares
 #: src/strings.ts:1294
 msgid "Your name is stored 100% end-to-end encrypted and only visible to you."
 msgstr "Your name is stored 100% end-to-end encrypted and only visible to you."
@@ -7074,7 +7013,7 @@ msgstr "Your session has expired. Please enter password for {obfuscatedEmail} to
 
 #: src/strings.ts:946
 msgid "Your shares"
-msgstr ""
+msgstr "Your shares"
 
 #: src/strings.ts:1020
 msgid "Your subscription ends on {date}"
