@@ -32,7 +32,7 @@ import {
   mdiLockOutline,
   mdiShareOutline
 } from "@mdi/js";
-import { MonographChat } from "../components/share-chat";
+import { ShareChat } from "../components/share-chat";
 import { Icon } from "@notesnook/ui";
 import { Footer } from "../components/footer";
 import { Header } from "../components/header";
