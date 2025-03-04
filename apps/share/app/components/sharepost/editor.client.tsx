@@ -34,12 +34,12 @@ import { i18n } from "@lingui/core";
 
 const locale = import.meta.env.DEV
   ? import("@notesnook/intl/locales/$pseudo-LOCALE.json")
-  : import("@notesnook/intl/locales/$en.json");
+  : import("@notesnook/intl/locales/$fr.json");
 locale.then(({ default: locale }) => {
   i18n.load({
-    en: locale.messages as unknown as Messages
+    fr: locale.messages as unknown as Messages
   });
-  i18n.activate("en");
+  i18n.activate("fr");
 });
 setI18nGlobal(i18n);
 
