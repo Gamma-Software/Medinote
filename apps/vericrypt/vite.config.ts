@@ -39,11 +39,29 @@ export default defineConfig({
     }
   },
   define: {
-    APP_VERSION: `"${version}"`
+    APP_VERSION: `"${version}"`,
+    global: "globalThis"
   },
   logLevel: process.env.NODE_ENV === "production" ? "warn" : "info",
   resolve: {
-    dedupe: ["react", "react-dom", "@emotion/react"]
+    dedupe: ["react", "react-dom", "@emotion/react"],
+    alias: {
+      "node:buffer": "buffer",
+      "node:stream": "stream-browserify",
+      "node:util": "util",
+      "node:assert": "assert",
+      "node:path": "path-browserify",
+      "node:os": "os-browserify/browser",
+      "node:fs": "browserify-fs",
+      "node:crypto": "crypto-browserify"
+    }
+  },
+  optimizeDeps: {
+    esbuildOptions: {
+      define: {
+        global: "globalThis"
+      }
+    }
   },
   server: {
     port: 3000
