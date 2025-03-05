@@ -22,8 +22,9 @@ import MDIIcon from "@mdi/react";
 import {
   mdiPlus,
   mdiMinus,
-  mdiBookOutline,
-  mdiNotebookOutline,
+  mdiAccountArrowRight,
+  mdiAccountSupervisor,
+  mdiBadgeAccount,
   mdiArrowLeft,
   mdiArrowRight,
   mdiArrowDown,
@@ -320,9 +321,9 @@ export const Note = createIcon(mdiNoteOutline);
 export const NoteRemove = createIcon(mdiNoteRemoveOutline);
 export const Notes = createIcon(mdiNoteMultipleOutline);
 export const Minus = createIcon(mdiMinus);
-export const Notebook = createIcon(mdiBookOutline);
-export const Notebooks = createIcon(mdiBookMultipleOutline);
-export const Notebook2 = createIcon(mdiNotebookOutline);
+export const Notebook = createIcon(mdiAccountSupervisor);
+export const Notebooks = createIcon(mdiBadgeAccount);
+export const Notebook2 = createIcon(mdiAccountArrowRight);
 export const ArrowLeft = createIcon(mdiArrowLeft);
 export const ArrowRight = createIcon(mdiArrowRight);
 export const ArrowDown = createIcon(mdiArrowDown);

@@ -100,7 +100,7 @@ function TitleBox(props: TitleBoxProps) {
       id="editor-title"
       data-test-id="editor-title"
       className="editorTitle"
-      placeholder={strings.noteTitle()}
+      placeholder={strings.encounter() + " " + new Date().toLocaleDateString() + " " + new Date().toLocaleTimeString([], {hour: '2-digit', minute:'2-digit'})}
       readOnly={readonly}
       dir="auto"
       wrap="soft"

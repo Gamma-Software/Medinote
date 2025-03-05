@@ -38,7 +38,7 @@ export const CompactFeatures = ({
         {
           highlight: "Unlimited",
           content: "notebooks",
-          icon: "notebook"
+          icon: "badge-account"
         },
         {
           highlight: "File & image",

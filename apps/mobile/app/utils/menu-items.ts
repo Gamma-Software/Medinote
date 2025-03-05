@@ -28,7 +28,7 @@ export const MenuItemsList = [
   {
     id: "notebooks",
     name: "Notebooks",
-    icon: "book-outline",
+    icon: "badge-account",
     close: true
   },
   {

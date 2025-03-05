@@ -137,7 +137,7 @@ export const PinItem = React.memo(
 
     const icons = {
       topic: "bookmark",
-      notebook: "book-outline",
+      notebook: "badge-account",
       tag: "pound"
     };
 

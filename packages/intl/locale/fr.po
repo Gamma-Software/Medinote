@@ -558,7 +558,7 @@ msgstr "{type, select, github {v{version} a été publié sur GitHub} other {v{v
 
 #: src/strings.ts:204
 msgid "{type, select, other {This list is empty} notebook {No notebooks} tag {No tags} note {No notes}}"
-msgstr "{type, select, other {Cette liste est vide} notebook {Aucun patient} tag {Aucune étiquette} note {Aucune note}}"
+msgstr "{type, select, other {Cette liste est vide} notebook {Aucun carnet} tag {Aucune étiquette} note {Aucune note}}"
 
 #: src/strings.ts:67
 msgid "{type, select, upload {Uploading} download {Downloading} sync {Syncing} other {Loading}}"
@@ -2315,6 +2315,10 @@ msgstr "Activer le correcteur orthographique"
 #: src/strings.ts:487
 msgid "Enable two-factor authentication to add an extra layer of security to your account."
 msgstr "Activez l'authentification à deux facteurs pour ajouter une couche de sécurité supplémentaire à votre compte."
+
+#: src/strings.ts:2441
+msgid "Encounter"
+msgstr "Visite"
 
 #: src/strings.ts:1219
 msgid "Encrypt your backups for added security"

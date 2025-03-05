@@ -914,7 +914,7 @@ export const useActions = ({
       {
         id: "notebooks",
         title: strings.linkNotebooks(),
-        icon: "book-outline",
+        icon: "badge-account",
         func: addTo
       },
       {

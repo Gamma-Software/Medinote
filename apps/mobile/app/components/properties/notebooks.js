@@ -70,7 +70,7 @@ export default function Notebooks({ note, close, full }) {
       }}
     >
       <Icon
-        name="book-outline"
+        name="badge-account"
         color={colors.primary.accent}
         size={SIZE.sm}
         style={{

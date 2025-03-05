@@ -2316,6 +2316,10 @@ msgstr "Enable spell checker"
 msgid "Enable two-factor authentication to add an extra layer of security to your account."
 msgstr "Enable two-factor authentication to add an extra layer of security to your account."
 
+#: src/strings.ts:2441
+msgid "Encounter"
+msgstr ""
+
 #: src/strings.ts:1219
 msgid "Encrypt your backups for added security"
 msgstr "Encrypt your backups for added security"
