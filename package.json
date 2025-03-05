@@ -17,6 +17,7 @@
     "start:desktop": "nx start @notesnook/desktop",
     "test:web": "nx test @notesnook/web",
     "test:core": "nx test @notesnook/core",
+    "build:core": "nx build @notesnook/core",
     "start:android": "nx run-android @notesnook/mobile",
     "start:ios": "nx run-ios @notesnook/mobile",
     "prepare:ios": "nx install-pods @notesnook/mobile",
