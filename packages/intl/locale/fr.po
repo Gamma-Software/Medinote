@@ -15,7 +15,7 @@ msgstr ""
 
 #: src/strings.ts:2390
 msgid " \"Notebook > Notes\""
-msgstr " \"Carnet > Notes\""
+msgstr " \"patient > Notes\""
 
 #: src/strings.ts:148
 msgid " Unlock with password once to enable biometric access."
@@ -23,7 +23,7 @@ msgstr " Déverrouillez avec un mot de passe une fois pour activer l'accès biom
 
 #: src/strings.ts:1922
 msgid " Upgrade to Notesnook Pro to add more notebooks."
-msgstr " Passez à Notesnook Pro pour ajouter plus de carnets."
+msgstr " Passez à Notesnook Pro pour ajouter plus de patients."
 
 #: src/strings.ts:1925
 msgid " Upgrade to Notesnook Pro to customize the toolbar."
@@ -107,7 +107,7 @@ msgstr "{count, plural, one {Êtes-vous sûr de vouloir supprimer cette note ?} 
 
 #: generated/action-confirmations.ts:20
 msgid "{count, plural, one {Are you sure you want to delete this notebook?} other {Are you sure you to delete these notebooks?}}"
-msgstr "{count, plural, one {Êtes-vous sûr de vouloir supprimer ce carnet ?} other {Êtes-vous sûr de vouloir supprimer ces carnets ?}}"
+msgstr "{count, plural, one {Êtes-vous sûr de vouloir supprimer ce patient ?} other {Êtes-vous sûr de vouloir supprimer ces patients ?}}"
 
 #: generated/action-confirmations.ts:16
 msgid "{count, plural, one {Are you sure you want to delete this reminder?} other {Are you sure you to delete these reminders?}}"
@@ -123,7 +123,7 @@ msgstr "{count, plural, one {Êtes-vous sûr de vouloir télécharger toutes les
 
 #: src/strings.ts:851
 msgid "{count, plural, one {Are you sure you want to move this notebook to {selectedNotebookTitle}?} other {Are you sure you want to move these # notebooks {selectedNotebookTitle}?}}"
-msgstr "{count, plural, one {Êtes-vous sûr de vouloir déplacer ce carnet vers {selectedNotebookTitle} ?} other {Êtes-vous sûr de vouloir déplacer ces # carnets vers {selectedNotebookTitle} ?}}"
+msgstr "{count, plural, one {Êtes-vous sûr de vouloir déplacer ce patient vers {selectedNotebookTitle} ?} other {Êtes-vous sûr de vouloir déplacer ces # patients vers {selectedNotebookTitle} ?}}"
 
 #: generated/action-confirmations.ts:76
 msgid "{count, plural, one {Are you sure you want to permanently delete this item?} other {Are you sure you to permanently delete these items?}}"
@@ -135,7 +135,7 @@ msgstr "{count, plural, one {Êtes-vous sûr de vouloir supprimer définitivemen
 
 #: generated/action-confirmations.ts:65
 msgid "{count, plural, one {Are you sure you want to permanently delete this notebook?} other {Are you sure you to permanently delete these notebooks?}}"
-msgstr "{count, plural, one {Êtes-vous sûr de vouloir supprimer définitivement ce carnet ?} other {Êtes-vous sûr de vouloir supprimer définitivement ces carnets ?}}"
+msgstr "{count, plural, one {Êtes-vous sûr de vouloir supprimer définitivement ce patient ?} other {Êtes-vous sûr de vouloir supprimer définitivement ces patients ?}}"
 
 #: src/strings.ts:135
 msgid "{count, plural, one {Attach image} other {Attach # images}}"
@@ -172,7 +172,7 @@ msgstr "{count, plural, one {Supprimer la note} other {Supprimer # notes}}"
 
 #: generated/do-actions.ts:20
 msgid "{count, plural, one {Delete notebook} other {Delete # notebooks}}"
-msgstr "{count, plural, one {Supprimer le carnet} other {Supprimer # carnets}}"
+msgstr "{count, plural, one {Supprimer le patient} other {Supprimer # patients}}"
 
 #: generated/do-actions.ts:16
 msgid "{count, plural, one {Delete reminder} other {Delete # reminders}}"
@@ -196,7 +196,7 @@ msgstr "{count, plural, one {Suppression de la note...} other {Suppression de # 
 
 #: generated/in-progress-actions.ts:12
 msgid "{count, plural, one {Deleting notebook...} other {Deleting # notebooks...}}"
-msgstr "{count, plural, one {Suppression du carnet...} other {Suppression de # carnets...}}"
+msgstr "{count, plural, one {Suppression du patient...} other {Suppression de # patients...}}"
 
 #: generated/in-progress-actions.ts:24
 msgid "{count, plural, one {Deleting reminder...} other {Deleting # reminders...}}"
@@ -220,7 +220,7 @@ msgstr "{count, plural, one {Modifier l'élément} other {Modifier # éléments}
 
 #: generated/do-actions.ts:191
 msgid "{count, plural, one {Edit notebook} other {Edit # notebooks}}"
-msgstr "{count, plural, one {Modifier le carnet} other {Modifier # carnets}}"
+msgstr "{count, plural, one {Modifier le patient} other {Modifier # patients}}"
 
 #: generated/do-actions.ts:195
 msgid "{count, plural, one {Edit reminder} other {Edit # reminders}}"
@@ -281,15 +281,15 @@ msgstr "{count, plural, one {Élément dépublié} other {# éléments dépubli�
 
 #: src/strings.ts:2407
 msgid "{count, plural, one {Move all notes in this notebook to trash} other {Move all notes in these notebooks to trash}}"
-msgstr "{count, plural, one {Déplacer toutes les notes de ce carnet vers la corbeille} other {Déplacer toutes les notes de ces carnets vers la corbeille}}"
+msgstr "{count, plural, one {Déplacer toutes les notes de ce patient vers la corbeille} other {Déplacer toutes les notes de ces patients vers la corbeille}}"
 
 #: src/strings.ts:849
 msgid "{count, plural, one {Move notebook} other {Move # notebooks}}"
-msgstr "{count, plural, one {Déplacer le carnet} other {Déplacer # carnets}}"
+msgstr "{count, plural, one {Déplacer le patient} other {Déplacer # patients}}"
 
 #: src/strings.ts:472
 msgid "{count, plural, one {Moving {title}} other {Moving # notebooks}}"
-msgstr "{count, plural, one {Déplacement de {title}} other {Déplacement de # carnets}}"
+msgstr "{count, plural, one {Déplacement de {title}} other {Déplacement de # patients}}"
 
 #: generated/action-errors.ts:25
 msgid "{count, plural, one {Note could not be published} other {# notes could not be published}}"
@@ -337,27 +337,27 @@ msgstr "{count, plural, one {note} other {# notes}}"
 
 #: generated/actions.ts:181
 msgid "{count, plural, one {Notebook created} other {# notebooks created}}"
-msgstr "{count, plural, one {Carnet créé} other {# carnets créés}}"
+msgstr "{count, plural, one {patient créé} other {# patients créés}}"
 
 #: generated/actions.ts:24
 msgid "{count, plural, one {Notebook deleted} other {# notebooks deleted}}"
-msgstr "{count, plural, one {Carnet supprimé} other {# carnets supprimés}}"
+msgstr "{count, plural, one {patient supprimé} other {# patients supprimés}}"
 
 #: generated/actions.ts:162
 msgid "{count, plural, one {Notebook edited} other {# notebooks edited}}"
-msgstr "{count, plural, one {Carnet modifié} other {# carnets modifiés}}"
+msgstr "{count, plural, one {patient modifié} other {# patients modifiés}}"
 
 #: generated/actions.ts:53
 msgid "{count, plural, one {Notebook moved to trash} other {# notebooks moved to trash}}"
-msgstr "{count, plural, one {Carnet déplacé vers la corbeille} other {# carnets déplacés vers la corbeille}}"
+msgstr "{count, plural, one {patient déplacé vers la corbeille} other {# patients déplacés vers la corbeille}}"
 
 #: generated/actions.ts:76
 msgid "{count, plural, one {Notebook permanently deleted} other {# notebooks permanently deleted}}"
-msgstr "{count, plural, one {Carnet supprimé définitivement} other {# carnets supprimés définitivement}}"
+msgstr "{count, plural, one {patient supprimé définitivement} other {# patients supprimés définitivement}}"
 
 #: generated/actions.ts:133
 msgid "{count, plural, one {Notebook restored} other {# notebooks restored}}"
-msgstr "{count, plural, one {Carnet restauré} other {# carnets restaurés}}"
+msgstr "{count, plural, one {patient restauré} other {# patients restaurés}}"
 
 #: generated/do-actions.ts:141
 msgid "{count, plural, one {Permanently delete attachment} other {Permanently delete # attachments}}"
@@ -378,7 +378,7 @@ msgstr "{count, plural, one {Épingler la note} other {Épingler # notes}}"
 
 #: generated/do-actions.ts:88
 msgid "{count, plural, one {Pin notebook} other {Pin # notebooks}}"
-msgstr "{count, plural, one {Épingler le carnet} other {Épingler # carnets}}"
+msgstr "{count, plural, one {Épingler le patient} other {Épingler # patients}}"
 
 #: src/strings.ts:902
 msgid "{count, plural, one {Prevent note from syncing} other {Prevent # notes from syncing}}"
@@ -438,7 +438,7 @@ msgstr "{count, plural, one {Restaurer la note} other {Restaurer # notes}}"
 
 #: generated/do-actions.ts:168
 msgid "{count, plural, one {Restore notebook} other {Restore # notebooks}}"
-msgstr "{count, plural, one {Restaurer le carnet} other {Restaurer # carnets}}"
+msgstr "{count, plural, one {Restaurer le patient} other {Restaurer # patients}}"
 
 #: generated/actions.ts:189
 msgid "{count, plural, one {Shortcut created} other {# shortcuts created}}"
@@ -466,7 +466,7 @@ msgstr "{count, plural, one {Désépingler la note} other {Désépingler # notes
 
 #: generated/do-actions.ts:65
 msgid "{count, plural, one {Unpin notebook} other {Unpin # notebooks}}"
-msgstr "{count, plural, one {Désépingler le carnet} other {Désépingler # carnets}}"
+msgstr "{count, plural, one {Désépingler le patient} other {Désépingler # patients}}"
 
 #: generated/do-actions.ts:116
 msgid "{count, plural, one {Unpublish item} other {Unpublish # items}}"
@@ -498,7 +498,7 @@ msgstr "{freq, plural, one {Se répète chaque année le {selectedDays} à {date
 
 #: src/strings.ts:327
 msgid "{itemType, select, tag {Add a tag} notebook {Add a notebook} reminder {Add a reminder} note {Add a note} other {Add an item}}"
-msgstr "{itemType, select, tag {Ajouter une étiquette} notebook {Ajouter un carnet} reminder {Ajouter un rappel} note {Ajouter une note} other {Ajouter un élément}}"
+msgstr "{itemType, select, tag {Ajouter une étiquette} notebook {Ajouter un patient} reminder {Ajouter un rappel} note {Ajouter une note} other {Ajouter un élément}}"
 
 #: src/strings.ts:191
 msgid "{key, select, dateCreated {Created at} dateEdited {Last edited at} dateModified {Last modified at} dateUploaded {Uploaded at} dateDeleted {Deleted at} other {{key}}}"
@@ -518,15 +518,15 @@ msgstr "{mode, select, repeat {Répéter} once {Une fois} permanent {Permanent} 
 
 #: src/strings.ts:1957
 msgid "{n} {added, plural, one {added to 1 notebook} other {added to # notebooks}} and {removed, plural, one {removed from 1 notebook} other {removed from # notebooks}}."
-msgstr "{n} {added, plural, one {ajouté à 1 carnet} other {ajoutés à # carnets}} et {removed, plural, one {supprimé de 1 carnet} other {supprimés de # carnets}}."
+msgstr "{n} {added, plural, one {ajouté à 1 patient} other {ajoutés à # patients}} et {removed, plural, one {supprimé de 1 patient} other {supprimés de # patients}}."
 
 #: src/strings.ts:1952
 msgid "{n} {added, plural, one {added to 1 notebook} other {added to # notebooks}}."
-msgstr "{n} {added, plural, one {ajouté à 1 carnet} other {ajoutés à # carnets}}."
+msgstr "{n} {added, plural, one {ajouté à 1 patient} other {ajoutés à # patients}}."
 
 #: src/strings.ts:1947
 msgid "{n} {removed, plural, one {removed from 1 notebook} other {removed from # notebooks}}."
-msgstr "{n} {removed, plural, one {supprimé de 1 carnet} other {supprimés de # carnets}}."
+msgstr "{n} {removed, plural, one {supprimé de 1 patient} other {supprimés de # patients}}."
 
 #: src/strings.ts:1942
 msgid "{notes, plural, one {1 note} other {# notes}}"
@@ -558,7 +558,7 @@ msgstr "{type, select, github {v{version} a été publié sur GitHub} other {v{v
 
 #: src/strings.ts:204
 msgid "{type, select, other {This list is empty} notebook {No notebooks} tag {No tags} note {No notes}}"
-msgstr "{type, select, other {Cette liste est vide} notebook {Aucun carnet} tag {Aucune étiquette} note {Aucune note}}"
+msgstr "{type, select, other {Cette liste est vide} notebook {Aucun patient} tag {Aucune étiquette} note {Aucune note}}"
 
 #: src/strings.ts:67
 msgid "{type, select, upload {Uploading} download {Downloading} sync {Syncing} other {Loading}}"
@@ -602,7 +602,7 @@ msgstr "code à 6 chiffres"
 
 #: src/strings.ts:1413
 msgid "A notebook can have unlimited topics with unlimited notes."
-msgstr "Un carnet peut avoir un nombre illimité de sujets avec des notes illimitées."
+msgstr "Un patient peut avoir un nombre illimité de sujets avec des notes illimitées."
 
 #: src/strings.ts:636
 msgid "A to Z"
@@ -634,7 +634,7 @@ msgstr "Actions pour la note : {title}"
 
 #: src/strings.ts:2433
 msgid "Actions for notebook: {title}"
-msgstr "Actions pour le carnet : {title}"
+msgstr "Actions pour le patient : {title}"
 
 #: src/strings.ts:2434
 msgid "Actions for tag: {title}"
@@ -670,7 +670,7 @@ msgstr "Ajouter une couleur"
 
 #: src/strings.ts:883
 msgid "Add notebook"
-msgstr "Ajouter un carnet"
+msgstr "Ajouter un patient"
 
 #: src/strings.ts:476
 msgid "Add notes to {title}"
@@ -682,7 +682,7 @@ msgstr "Ajouter un raccourci"
 
 #: src/strings.ts:725
 msgid "Add shortcuts for notebooks and tags here."
-msgstr "Ajouter des raccourcis pour les carnets et les étiquettes ici."
+msgstr "Ajouter des raccourcis pour les patients et les étiquettes ici."
 
 #: src/strings.ts:563
 msgid "Add tag"
@@ -706,7 +706,7 @@ msgstr "Ajouter votre première note"
 
 #: src/strings.ts:960
 msgid "Add your first notebook"
-msgstr "Ajouter votre premier carnet"
+msgstr "Ajouter votre premier patient"
 
 #: src/strings.ts:2152
 msgid "Advanced"
@@ -1167,7 +1167,7 @@ msgstr "Gras"
 
 #: src/strings.ts:2389
 msgid "Boost your productivity with Notebooks and organize your notes."
-msgstr "Boostez votre productivité avec les carnets et organisez vos notes."
+msgstr "Boostez votre productivité avec les patients et organisez vos notes."
 
 #: src/strings.ts:1790
 msgid "Browse"
@@ -1424,7 +1424,7 @@ msgstr "Effacer les données et réinitialiser le compte"
 
 #: src/strings.ts:1124
 msgid "Clear default notebook"
-msgstr "Effacer le carnet par défaut"
+msgstr "Effacer le patient par défaut"
 
 #: src/strings.ts:998
 msgid "Clear logs"
@@ -1748,11 +1748,11 @@ msgstr "Créer un lien"
 
 #: src/strings.ts:1455
 msgid "Create shortcut of this notebook in side menu"
-msgstr "Créer un raccourci de ce carnet dans le menu latéral"
+msgstr "Créer un raccourci de ce patient dans le menu latéral"
 
 #: src/strings.ts:1369
 msgid "Create unlimited notebooks with Notesnook Pro"
-msgstr "Créez un nombre illimité de carnets avec Notesnook Pro"
+msgstr "Créez un nombre illimité de patients avec Notesnook Pro"
 
 #: src/strings.ts:1368
 msgid "Create unlimited tags with Notesnook Pro"
@@ -1947,7 +1947,7 @@ msgstr "Taille de police par défaut dans l'éditeur"
 
 #: src/strings.ts:1126
 msgid "Default notebook cleared"
-msgstr "Carnet par défaut effacé"
+msgstr "patient par défaut effacé"
 
 #: src/strings.ts:1112
 msgid "Default screen to open on app launch"
@@ -2390,11 +2390,11 @@ msgstr "Passer en mode plein écran"
 
 #: src/strings.ts:1472
 msgid "Enter notebook description"
-msgstr "Entrez la description du carnet"
+msgstr "Entrez la description du patient"
 
 #: src/strings.ts:844
 msgid "Enter notebook title"
-msgstr "Entrez le titre du carnet"
+msgstr "Entrez le titre du patient"
 
 #: src/strings.ts:779
 msgid "Enter password"
@@ -2482,7 +2482,7 @@ msgstr "Serveur d'événements"
 
 #: src/strings.ts:2391
 msgid "Every Notebook can have notes and sub notebooks."
-msgstr "Chaque carnet peut contenir des notes et des sous-carnets."
+msgstr "Chaque patient peut contenir des notes et des sous-patients."
 
 #: src/strings.ts:2393
 msgid "Everything related to my job in one place."
@@ -2547,7 +2547,7 @@ msgstr "Extraction des fichiers..."
 
 #: src/strings.ts:1788
 msgid "EXTREMELY DANGEROUS! This action is irreversible. All your data including notes, notebooks, attachments & settings will be deleted. This is a full account reset. Proceed with caution."
-msgstr "EXTRÊMEMENT DANGEREUX ! Cette action est irréversible. Toutes vos données, y compris les notes, carnets, pièces jointes et paramètres, seront supprimées. Il s'agit d'une réinitialisation complète du compte. Procédez avec prudence."
+msgstr "EXTRÊMEMENT DANGEREUX ! Cette action est irréversible. Toutes vos données, y compris les notes, patients, pièces jointes et paramètres, seront supprimées. Il s'agit d'une réinitialisation complète du compte. Procédez avec prudence."
 
 #: src/strings.ts:1244
 msgid "Faced an issue or have a suggestion? Click here to create a bug report"
@@ -2854,7 +2854,7 @@ msgstr "Revenir en arrière dans l'onglet"
 
 #: src/strings.ts:2206
 msgid "Go back to notebooks"
-msgstr "Revenir aux carnets"
+msgstr "Revenir aux patients"
 
 #: src/strings.ts:2207
 msgid "Go back to tags"
@@ -3332,7 +3332,7 @@ msgstr "Lien copié"
 
 #: src/strings.ts:916
 msgid "Link notebooks"
-msgstr "Lier les carnets"
+msgstr "Lier les patients"
 
 #: src/strings.ts:2245
 msgid "Link settings"
@@ -3352,7 +3352,7 @@ msgstr "Lien vers la note"
 
 #: src/strings.ts:839
 msgid "Link to notebook"
-msgstr "Lien vers le carnet"
+msgstr "Lien vers le patient"
 
 #: src/strings.ts:586
 msgid "Linked notes"
@@ -3401,7 +3401,7 @@ msgstr "Chargement de vos favoris"
 
 #: src/strings.ts:956
 msgid "Loading your notebooks"
-msgstr "Chargement de vos carnets"
+msgstr "Chargement de vos patients"
 
 #: src/strings.ts:954
 msgid "Loading your notes"
@@ -3656,7 +3656,7 @@ msgstr "Déplacer la colonne vers la droite"
 
 #: src/strings.ts:923
 msgid "Move notebook"
-msgstr "Déplacer le carnet"
+msgstr "Déplacer le patient"
 
 #: src/strings.ts:886
 msgid "Move notes"
@@ -3736,7 +3736,7 @@ msgstr "Nouvelle note"
 
 #: src/strings.ts:516
 msgid "New notebook"
-msgstr "Nouveau carnet"
+msgstr "Nouveau patient"
 
 #: src/strings.ts:1462
 msgid "New password"
@@ -3925,30 +3925,30 @@ msgstr "REMARQUE : La création d'une sauvegarde avec des pièces jointes peut p
 
 #: src/strings.ts:286
 msgid "notebook"
-msgstr "carnet"
+msgstr "patient"
 
 #: src/strings.ts:296
 #: src/strings.ts:1502
 msgid "Notebook"
-msgstr "Carnet"
+msgstr "patient"
 
 #: src/strings.ts:306
 msgid "notebooks"
-msgstr "carnets"
+msgstr "patients"
 
 #: src/strings.ts:258
 #: src/strings.ts:316
 #: src/strings.ts:1501
 msgid "Notebooks"
-msgstr "Carnets"
+msgstr "Patients"
 
 #: src/strings.ts:1775
 msgid "NOTEBOOKS"
-msgstr "CARNETS"
+msgstr "PATIENTS"
 
 #: src/strings.ts:2221
 msgid "Notebooks are the best way to organize your notes."
-msgstr "Les carnets sont le meilleur moyen d'organiser vos notes."
+msgstr "Organiser vos notes par patients."
 
 #: src/strings.ts:305
 msgid "notes"
@@ -4840,7 +4840,7 @@ msgstr "Supprimer de tout"
 
 #: src/strings.ts:894
 msgid "Remove from notebook"
-msgstr "Supprimer du carnet"
+msgstr "Supprimer du patient"
 
 #: src/strings.ts:2436
 msgid "Remove from recents"
@@ -5174,7 +5174,7 @@ msgstr "Rechercher une note à lier"
 
 #: src/strings.ts:2417
 msgid "Search for notes, notebooks, and tags..."
-msgstr "Rechercher des notes, des carnets et des étiquettes..."
+msgstr "Rechercher des notes, des patients et des étiquettes..."
 
 #: src/strings.ts:1519
 msgid "Search in {routeName}"
@@ -5194,11 +5194,11 @@ msgstr "Rechercher à la maison"
 
 #: src/strings.ts:29
 msgid "Search in Notebook"
-msgstr "Rechercher dans le carnet"
+msgstr "Rechercher dans le patient"
 
 #: src/strings.ts:28
 msgid "Search in Notebooks"
-msgstr "Rechercher dans les carnets"
+msgstr "Rechercher dans les patients"
 
 #: src/strings.ts:27
 msgid "Search in Notes"
@@ -5234,7 +5234,7 @@ msgstr "Rechercher des langues"
 
 #: src/strings.ts:1473
 msgid "Search notebooks"
-msgstr "Rechercher des carnets"
+msgstr "Rechercher des patients"
 
 #: src/strings.ts:1486
 msgid "Search or add a tag"
@@ -5326,11 +5326,11 @@ msgstr "Sélectionnez la méthode d'authentification à deux facteurs"
 
 #: src/strings.ts:451
 msgid "Select notebooks"
-msgstr "Sélectionner les carnets"
+msgstr "Sélectionner les patients"
 
 #: src/strings.ts:452
 msgid "Select notebooks you want to add note(s) to."
-msgstr "Sélectionnez les carnets auxquels vous souhaitez ajouter des notes."
+msgstr "Sélectionnez les patients auxquels vous souhaitez ajouter des notes."
 
 #: src/strings.ts:342
 msgid "Select nth day of the month to repeat the reminder."
@@ -6159,7 +6159,7 @@ msgstr "CONSEIL"
 #: src/strings.ts:638
 #: src/strings.ts:643
 msgid "Title"
-msgstr "Titre"
+msgstr "Nom complet du patient"
 
 #: src/strings.ts:1142
 msgid "Title format"
@@ -6288,7 +6288,7 @@ msgstr "Dissocier de tout"
 
 #: src/strings.ts:841
 msgid "Unlink notebook"
-msgstr "Dissocier le carnet"
+msgstr "Dissocier le patient"
 
 #: src/strings.ts:157
 msgid "Unlock"
@@ -6428,7 +6428,7 @@ msgstr "Utiliser"
 
 #: src/strings.ts:454
 msgid "Use {keyboardShortcut}+click to select multiple notebooks"
-msgstr "Utilisez {keyboardShortcut}+clic pour sélectionner plusieurs carnets"
+msgstr "Utilisez {keyboardShortcut}+clic pour sélectionner plusieurs patients"
 
 #: src/strings.ts:1783
 msgid "Use a backup file"
@@ -6588,7 +6588,7 @@ msgstr "Vidéos"
 
 #: src/strings.ts:561
 msgid "View all linked notebooks"
-msgstr "Afficher tous les carnets liés"
+msgstr "Afficher tous les patients liés"
 
 #: src/strings.ts:1255
 msgid "View and share debug logs"
@@ -6762,7 +6762,7 @@ msgstr "Vous pouvez changer le thème à tout moment dans les paramètres ou le 
 
 #: src/strings.ts:2400
 msgid "You can create shortcuts of frequently accessed notebooks in the side menu"
-msgstr "Vous pouvez créer des raccourcis vers les carnets fréquemment consultés dans le menu latéral"
+msgstr "Vous pouvez créer des raccourcis vers les patients fréquemment consultés dans le menu latéral"
 
 #: src/strings.ts:2060
 msgid "You can import your notes from most other note taking apps."
@@ -6770,11 +6770,11 @@ msgstr "Vous pouvez importer vos notes depuis la plupart des autres applications
 
 #: src/strings.ts:1418
 msgid "You can multi-select notes and move them to a notebook at once"
-msgstr "Vous pouvez sélectionner plusieurs notes et les déplacer vers un carnet en une seule fois"
+msgstr "Vous pouvez sélectionner plusieurs notes et les déplacer vers un patient en une seule fois"
 
 #: src/strings.ts:1409
 msgid "You can pin frequently used Notebooks to the Side Menu to quickly access them."
-msgstr "Vous pouvez épingler les carnets fréquemment utilisés dans le menu latéral pour y accéder rapidement."
+msgstr "Vous pouvez épingler les patients fréquemment utilisés dans le menu latéral pour y accéder rapidement."
 
 #: src/strings.ts:1155
 msgid "You can set a custom proxy URL to increase your privacy."
@@ -6828,7 +6828,7 @@ msgstr "Vous avez été déconnecté."
 
 #: src/strings.ts:950
 msgid "You have not added any notebooks yet"
-msgstr "Vous n'avez ajouté aucun carnet pour l'instant"
+msgstr "Vous n'avez ajouté aucun patients pour l'instant"
 
 #: src/strings.ts:949
 msgid "You have not added any tags yet"
@@ -6981,7 +6981,7 @@ msgstr "Votre note sera déchiffrée et supprimée du coffre-fort."
 
 #: src/strings.ts:944
 msgid "Your notebooks"
-msgstr "Vos carnets"
+msgstr "Vos patients"
 
 #: src/strings.ts:942
 msgid "Your notes"
