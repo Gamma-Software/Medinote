@@ -39,7 +39,7 @@ import {
   getChangedNodes,
   LinkAttributes
 } from "@notesnook/editor";
-import { Box, Flex } from "@theme-ui/components";
+import { Box, Button, Flex } from "@theme-ui/components";
 import {
   PropsWithChildren,
   useEffect,
@@ -58,12 +58,13 @@ import { writeToClipboard } from "../../utils/clipboard";
 import { useEditorStore } from "../../stores/editor-store";
 import { parseInternalLink } from "@notesnook/core";
 import Skeleton from "react-loading-skeleton";
-import useMobile from "../../hooks/use-mobile";
+import useMobile, { isMobile } from "../../hooks/use-mobile";
 import useTablet from "../../hooks/use-tablet";
 import { TimeFormat } from "@notesnook/core";
 import { BuyDialog } from "../../dialogs/buy-dialog";
 import { EDITOR_ZOOM } from "./common";
 import { ScrollContainer } from "@notesnook/ui";
+import { BubbleMenu, FloatingMenu } from "@tiptap/react";
 
 export type OnChangeHandler = (
   content: () => string,
@@ -389,6 +390,42 @@ function TipTap(props: TipTapProps) {
             else if (e.deltaY < 0) scrollcontainer.scrollLeft -= 100;
           }}
         >
+          {editor && <BubbleMenu className="bubble-menu" tippyOptions={{ duration: 100 }} editor={editor}>
+
+            <Button
+              variant="secondary"
+              sx={{
+                ":hover:not(:disabled):not(:active)": !isMobile
+                  ? undefined
+                  : {
+                      bg: "transparent"
+                    }
+              }}
+              onClick={() => editor.chain().focus().toggleBold().run()}
+              onMouseDown={(e) => e.preventDefault()}
+            >
+              Bold
+            </Button>
+            <Button
+              sx={
+                editor.isActive("italic") ? {
+                      bg: "red"
+                    } : undefined
+              }
+              variant="secondary"
+              onClick={() => editor.chain().focus().toggleItalic().run()}
+            >
+              Italic
+            </Button>
+            <Button
+              variant="secondary"
+              onClick={() => editor.chain().focus().toggleStrike().run()}
+              className={editor.isActive("strike") ? "is-active" : ""}
+            >
+                Strike
+            </Button>
+            </BubbleMenu>
+          }
           <Toolbar
             editor={editor}
             location={"top"}
