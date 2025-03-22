@@ -47,6 +47,7 @@ import { TITLE_BAR_HEIGHT } from "./components/title-bar";
 import { getFontSizes } from "@notesnook/theme/theme/font/fontsize.js";
 import { useWindowControls } from "./hooks/use-window-controls";
 import { STATUS_BAR_HEIGHT } from "./common/constants";
+import { MicrophoneButton } from "./components/MicrophoneButton";
 
 new WebExtensionRelay();
 
@@ -231,6 +232,7 @@ function DesktopAppContents({ show, setShow }: DesktopAppContentsProps) {
           </Pane>
         </SplitPane>
       </Flex>
+      <MicrophoneButton />
       <StatusBar />
     </>
   );

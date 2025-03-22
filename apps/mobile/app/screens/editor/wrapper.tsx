@@ -37,6 +37,9 @@ import { useSettingStore } from "../../stores/use-setting-store";
 import { editorRef } from "../../utils/global-refs";
 import { editorController, textInput } from "./tiptap/utils";
 import deviceInfo from "react-native-device-info";
+import { FloatingMicButton } from "../../components/container/floating-mic-button";
+import { useSpeechRecognition } from "../../hooks/use-speech-recognition";
+import { ToastManager } from "../../services/event-manager";
 
 export const EditorWrapper = ({ widths }: { widths: any }) => {
   const { colors } = useThemeColors();
@@ -50,6 +53,28 @@ export const EditorWrapper = ({ widths }: { widths: any }) => {
   );
   const keyboard = useKeyboard();
   const prevState = useRef<AppStateStatus>();
+  const { isRecording, results, error, startRecording, stopRecording } = useSpeechRecognition();
+
+  useEffect(() => {
+    if (results.length > 0) {
+      const text = results[0]; // Use the first (most confident) result
+      if (editorController.current?.commands) {
+        editorController.current.commands.insertContent(text + " ");
+      }
+    }
+  }, [results]);
+
+  useEffect(() => {
+    if (error) {
+      ToastManager.show({
+        heading: "Speech Recognition Error",
+        message: error,
+        type: "error",
+        context: "editor",
+        duration: 3000
+      });
+    }
+  }, [error]);
 
   const onAppStateChanged = async (state: AppStateStatus) => {
     if (!prevState.current) {
@@ -100,25 +125,31 @@ export const EditorWrapper = ({ widths }: { widths: any }) => {
       }}
     >
       {loading || !introCompleted ? null : (
-        <KeyboardAvoidingViewIOS
-          behavior="padding"
-          style={{
-            marginBottom: getMarginBottom(),
-            backgroundColor: colors.primary.background,
-            flex: 1
-          }}
-          enabled={!floating}
-          keyboardVerticalOffset={0}
-        >
-          <PremiumToast key="toast" context="editor" offset={50 + insets.top} />
-          <TextInput
-            key="input"
-            ref={textInput}
-            style={{ height: 1, padding: 0, width: 1, position: "absolute" }}
-            blurOnSubmit={false}
+        <>
+          <KeyboardAvoidingViewIOS
+            behavior="padding"
+            style={{
+              marginBottom: getMarginBottom(),
+              backgroundColor: colors.primary.background,
+              flex: 1
+            }}
+            enabled={!floating}
+            keyboardVerticalOffset={0}
+          >
+            <PremiumToast key="toast" context="editor" offset={50 + insets.top} />
+            <TextInput
+              key="input"
+              ref={textInput}
+              style={{ height: 1, padding: 0, width: 1, position: "absolute" }}
+              blurOnSubmit={false}
+            />
+            <Editor key="editor" withController={true} />
+          </KeyboardAvoidingViewIOS>
+          <FloatingMicButton
+            onPress={isRecording ? stopRecording : startRecording}
+            isRecording={isRecording}
           />
-          <Editor key="editor" withController={true} />
-        </KeyboardAvoidingViewIOS>
+        </>
       )}
     </View>
   );
