@@ -339,6 +339,9 @@ async function multiPartUploadFile(
   requestOptions: RequestOptionsWithSignal
 ) {
   const { headers, signal } = requestOptions;
+  const MAX_RETRIES = 5;
+  const RETRY_DELAY = 2000;
+  const TIMEOUT = 60000;
 
   const additionalData = (fileHandle.file.additionalData ||
     {}) as UploadAdditionalData;
@@ -395,36 +398,69 @@ async function multiPartUploadFile(
     );
     const url = parts[i];
     queue.add(async () => {
-      const blob = await fileHandle.readChunks(
-        i * UPLOAD_PART_REQUIRED_CHUNKS,
-        length
-      );
-      const response = await axios
-        .request({
-          url,
-          method: "PUT",
-          headers: { "Content-Type": "" },
-          signal,
-          data: blob,
-          onUploadProgress: (ev) => {
-            uploadedBytes += ev.bytes;
-            onUploadProgress();
-          }
-        })
-        .catch((e) => {
-          throw new WrappedError(`Failed to upload part at offset ${i}`, e);
-        });
+      let retries = 0;
+      while (retries < MAX_RETRIES) {
+        try {
+          const blob = await fileHandle.readChunks(
+            i * UPLOAD_PART_REQUIRED_CHUNKS,
+            length
+          );
 
-      if (!response.headers.etag || typeof response.headers.etag !== "string")
-        throw new Error(
-          `Failed to upload part at offset ${i}: invalid etag. ETag: ${response.headers.etag}`
-        );
-      uploadedChunks.push({
-        PartNumber: i + 1,
-        ETag: JSON.parse(response.headers.etag)
-      });
-      await fileHandle.addAdditionalData("uploadedChunks", uploadedChunks);
-      await fileHandle.addAdditionalData("uploadedBytes", uploadedBytes);
+          const response = await axios.request({
+            url,
+            method: "PUT",
+            headers: {
+              "Content-Type": "",
+              "Content-Length": blob.size.toString()
+            },
+            maxBodyLength: Infinity,
+            maxContentLength: Infinity,
+            signal,
+            data: blob,
+            timeout: TIMEOUT,
+            onUploadProgress: (ev) => {
+              uploadedBytes += ev.bytes;
+              onUploadProgress();
+            }
+          });
+
+          if (
+            !response.headers.etag ||
+            typeof response.headers.etag !== "string"
+          ) {
+            throw new Error(
+              `Failed to upload part at offset ${i}: invalid etag. ETag: ${response.headers.etag}`
+            );
+          }
+
+          uploadedChunks.push({
+            PartNumber: i + 1,
+            ETag: JSON.parse(response.headers.etag)
+          });
+          await fileHandle.addAdditionalData("uploadedChunks", uploadedChunks);
+          await fileHandle.addAdditionalData("uploadedBytes", uploadedBytes);
+          break;
+        } catch (e) {
+          retries++;
+          console.error(
+            `Upload failed for part ${i}, attempt ${retries}/${MAX_RETRIES}:`,
+            e
+          );
+
+          if (retries >= MAX_RETRIES) {
+            throw new WrappedError(
+              `Failed to upload part at offset ${i} after ${MAX_RETRIES} attempts. Last error: ${e.message}`,
+              e
+            );
+          }
+
+          const backoffDelay = RETRY_DELAY * Math.pow(2, retries);
+          console.warn(
+            `Retry ${retries}/${MAX_RETRIES} for part ${i}. Waiting ${backoffDelay}ms...`
+          );
+          await new Promise((resolve) => setTimeout(resolve, backoffDelay));
+        }
+      }
     });
   }
   await queue.done();
