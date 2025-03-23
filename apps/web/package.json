@@ -127,8 +127,8 @@
     "workbox-strategies": "^7.3.0"
   },
   "scripts": {
-    "start": "cross-env PLATFORM=web vite",
-    "start:desktop": "cross-env PLATFORM=desktop vite",
+    "start": "cross-env PLATFORM=web vite --host --port 3000 --force",
+    "start:desktop": "cross-env PLATFORM=desktop vite --host --port 3000 --force",
     "start:test": "serve -s build/ -p 3000",
     "build": "cross-env PLATFORM=web vite build",
     "build:test": "cross-env PLATFORM=web TEST=true vite build",

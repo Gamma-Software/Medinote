@@ -277,75 +277,78 @@ function MobileAppContents() {
   }, [slideToIndex]);
 
   return (
-    <FlexScrollContainer
-      scrollRef={ref}
-      id="slider"
-      suppressScrollX
-      style={{
-        display: "flex",
-        flexDirection: "row",
-        overflowY: "hidden",
-        scrollSnapType: "x mandatory",
-        scrollBehavior: "smooth",
-        WebkitOverflowScrolling: "touch",
-        scrollSnapStop: "always",
-        overscrollBehavior: "contain",
-        overflowX: "auto",
-        flex: 1
-      }}
-    >
-      <Flex
-        className="mobile-nav-pane"
-        sx={{
-          scrollSnapAlign: "start",
+    <>
+      <FlexScrollContainer
+        scrollRef={ref}
+        id="slider"
+        suppressScrollX
+        style={{
+          display: "flex",
+          flexDirection: "row",
+          overflowY: "hidden",
+          scrollSnapType: "x mandatory",
+          scrollBehavior: "smooth",
+          WebkitOverflowScrolling: "touch",
           scrollSnapStop: "always",
-          width: 300,
-          flexShrink: 0
+          overscrollBehavior: "contain",
+          overflowX: "auto",
+          flex: 1
         }}
       >
-        <NavigationMenu toggleNavigationContainer={() => {}} isTablet={false} />
-      </Flex>
-      <Flex
-        className="mobile-list-pane"
-        variant="columnFill"
-        sx={{
-          position: "relative",
-          scrollSnapAlign: "start",
-          scrollSnapStop: "always",
-          flexShrink: 0,
-          width: "100vw"
-        }}
-      >
-        <CachedRouter />
-        <Box
-          id="overlay"
-          onClick={() => slideToIndex(1)}
+        <Flex
+          className="mobile-nav-pane"
           sx={{
-            position: "absolute",
-            width: "100%",
-            height: "100%",
-            top: 0,
-            left: 0,
-            zIndex: 999,
-            opacity: 0,
-            visibility: "visible",
-            pointerEvents: "none"
+            scrollSnapAlign: "start",
+            scrollSnapStop: "always",
+            width: 300,
+            flexShrink: 0
           }}
-          bg="black"
-        />
-      </Flex>
-      <Flex
-        className="mobile-editor-pane"
-        sx={{
-          scrollSnapAlign: "start",
-          scrollSnapStop: "always",
-          flexDirection: "column",
-          flexShrink: 0,
-          width: "100vw"
-        }}
-      >
-        <HashRouter />
-      </Flex>
-    </FlexScrollContainer>
+        >
+          <NavigationMenu toggleNavigationContainer={() => {}} isTablet={false} />
+        </Flex>
+        <Flex
+          className="mobile-list-pane"
+          variant="columnFill"
+          sx={{
+            position: "relative",
+            scrollSnapAlign: "start",
+            scrollSnapStop: "always",
+            flexShrink: 0,
+            width: "100vw"
+          }}
+        >
+          <CachedRouter />
+          <Box
+            id="overlay"
+            onClick={() => slideToIndex(1)}
+            sx={{
+              position: "absolute",
+              width: "100%",
+              height: "100%",
+              top: 0,
+              left: 0,
+              zIndex: 999,
+              opacity: 0,
+              visibility: "visible",
+              pointerEvents: "none"
+            }}
+            bg="black"
+          />
+        </Flex>
+        <Flex
+          className="mobile-editor-pane"
+          sx={{
+            scrollSnapAlign: "start",
+            scrollSnapStop: "always",
+            flexDirection: "column",
+            flexShrink: 0,
+            width: "100vw"
+          }}
+        >
+          <HashRouter />
+        </Flex>
+      </FlexScrollContainer>
+      <MicrophoneButton />
+    </>
   );
 }

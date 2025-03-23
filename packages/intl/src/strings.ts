@@ -2438,5 +2438,14 @@ Use this if changes from other devices are not appearing on this device. This wi
   releaseTrackDesc: () => t`Select the release track for Notesnook.`,
   stable: () => t`Stable`,
   beta: () => t`Beta`,
-  encounter: () => t`Encounter`
+  encounter: () => t`Encounter`,
+  recordingVoiceNote: () => t`Recording Voice Note`,
+  voiceNoteInstructions: () =>
+    t`Click the microphone button to start recording. Click again to stop.`,
+  failedToSaveVoiceNote: () => t`Failed to save voice note. Please try again.`,
+  voiceRecordingPlaceholder: () =>
+    t`Click the microphone button to start recording`,
+  startRecording: () => t`Start Recording`,
+  stopRecording: () => t`Stop Recording`,
+  skip: () => t`Skip recording and write note`
 };

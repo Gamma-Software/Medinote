@@ -74,11 +74,19 @@ import { strings } from "@notesnook/intl";
 import { onPageVisibilityChanged } from "../../utils/page-visibility";
 import { Pane, SplitPane } from "../split-pane";
 import { TITLE_BAR_HEIGHT } from "../title-bar";
+import { NoteTypeSelector } from "../note-type-selector";
+import { VoiceRecorder } from "../voice-recorder";
 
 const PDFPreview = React.lazy(() => import("../pdf-preview"));
 
 const autoSaveToast = { show: true, hide: () => {} };
 
+/**
+ * Save the content of the note.
+ * @param noteId - The ID of the note.
+ * @param ignoreEdit - Whether to ignore the edit.
+ * @param content - The content to be saved.
+ */
 async function saveContent(
   noteId: string,
   ignoreEdit: boolean,
@@ -116,6 +124,10 @@ async function saveContent(
 }
 const deferredSave = debounceWithId(saveContent, 100);
 
+/**
+ * The main component for rendering the tabs view in the editor.
+ * @returns The TabsView component.
+ */
 export default function TabsView() {
   const tabs = useEditorStore((store) => store.tabs);
   const documentPreview = useEditorStore((store) => store.documentPreview);
@@ -157,6 +169,7 @@ export default function TabsView() {
                 .getState()
                 .getSession(tab.sessionId);
               if (!session) return null;
+              console.debug("session", session);
               return (
                 <Freeze key={session.id} freeze={tab.id !== activeTab?.id}>
                   {session.type === "locked" ? (
@@ -164,6 +177,8 @@ export default function TabsView() {
                   ) : session.type === "conflicted" ||
                     session.type === "diff" ? (
                     <DiffViewer session={session} />
+                  ) : session.type === "new" ? (
+                    <VoiceNoteView session={session} />
                   ) : (
                     <MemoizedEditorView session={session} />
                   )}
@@ -171,7 +186,6 @@ export default function TabsView() {
               );
             })}
           </Pane>
-
           {documentPreview ? (
             <Pane id="pdf-preview-panel" initialSize={435} minSize={435}>
               <ScopedThemeProvider
@@ -224,6 +238,9 @@ export default function TabsView() {
   );
 }
 
+/**
+ * Memoized version of the EditorView component to prevent unnecessary re-renders.
+ */
 const MemoizedEditorView = React.memo(
   EditorView,
   (prev, next) =>
@@ -231,6 +248,12 @@ const MemoizedEditorView = React.memo(
     prev.session.type === next.session.type &&
     prev.session.needsHydration === next.session.needsHydration
 );
+
+/**
+ * The main editor view component.
+ * @param props - The properties for the EditorView component.
+ * @returns The EditorView component.
+ */
 function EditorView({
   session
 }: {
@@ -305,6 +328,10 @@ function EditorView({
 
   if (session.needsHydration) return null;
 
+  //if (session.type === "new" && !session.noteType) {
+  //  return <NoteTypeSelector />;
+  //}
+
   return (
     <Flex
       ref={root}
@@ -375,6 +402,11 @@ function EditorView({
   );
 }
 
+/**
+ * Component to show the progress of downloading an attachment.
+ * @param props - The properties for the DownloadAttachmentProgress component.
+ * @returns The DownloadAttachmentProgress component.
+ */
 type DownloadAttachmentProgressProps = {
   hash: string;
 };
@@ -429,6 +461,11 @@ function DownloadAttachmentProgress(props: DownloadAttachmentProgressProps) {
   );
 }
 
+/**
+ * The main editor component.
+ * @param props - The properties for the Editor component.
+ * @returns The Editor component.
+ */
 type EditorOptions = {
   headless?: boolean;
   readonly?: boolean;
@@ -637,6 +674,11 @@ export function Editor(props: EditorProps) {
   );
 }
 
+/**
+ * The chrome wrapper for the editor component.
+ * @param props - The properties for the EditorChrome component.
+ * @returns The EditorChrome component.
+ */
 function EditorChrome(props: PropsWithChildren<EditorProps>) {
   const { id, options, children } = props;
   const { focusMode, headless, onRequestFocus } = options || {
@@ -720,6 +762,11 @@ function EditorChrome(props: PropsWithChildren<EditorProps>) {
   );
 }
 
+/**
+ * Component for the drop zone to handle file attachments.
+ * @param props - The properties for the DropZone component.
+ * @returns The DropZone component.
+ */
 type DropZoneProps = {
   overlayRef: React.MutableRefObject<HTMLElement | undefined>;
 };
@@ -770,6 +817,10 @@ function DropZone(props: DropZoneProps) {
   );
 }
 
+/**
+ * Hook to manage the drag overlay for file attachments.
+ * @returns The drop element and overlay references.
+ */
 function useDragOverlay() {
   const dropElementRef = useRef<HTMLDivElement>(null);
   const overlayRef = useRef<HTMLElement>();
@@ -815,6 +866,10 @@ function useDragOverlay() {
   return [dropElementRef, overlayRef] as const;
 }
 
+/**
+ * Hook to scroll to a specific block in the editor.
+ * @param session - The editor session.
+ */
 function useScrollToBlock(session: EditorSession) {
   const blockId = useEditorStore(
     (store) => store.getSession(session.id)?.activeBlockId
@@ -828,6 +883,11 @@ function useScrollToBlock(session: EditorSession) {
   }, [session.id, session.type, blockId]);
 }
 
+/**
+ * Check if the drag event contains files.
+ * @param e - The drag event.
+ * @returns True if the event contains files, false otherwise.
+ */
 function isFile(e: DragEvent) {
   return (
     e.dataTransfer &&
@@ -836,6 +896,10 @@ function isFile(e: DragEvent) {
   );
 }
 
+/**
+ * Restore the scroll position in the editor.
+ * @param session - The editor session.
+ */
 function restoreScrollPosition(session: EditorSession) {
   if (session?.activeBlockId) return scrollIntoViewById(session.activeBlockId);
 
@@ -862,6 +926,11 @@ function restoreScrollPosition(session: EditorSession) {
   }
 }
 
+/**
+ * Restore the selection in the editor.
+ * @param editor - The editor instance.
+ * @param id - The editor ID.
+ */
 function restoreSelection(editor: IEditor, id: string) {
   setTimeout(() => {
     editor.focus({
@@ -870,6 +939,11 @@ function restoreSelection(editor: IEditor, id: string) {
   });
 }
 
+/**
+ * Component to unlock a locked note.
+ * @param props - The properties for the UnlockNoteView component.
+ * @returns The UnlockNoteView component.
+ */
 type UnlockNoteViewProps = { session: LockedEditorSession };
 function UnlockNoteView(props: UnlockNoteViewProps) {
   const { session } = props;
@@ -917,5 +991,187 @@ function UnlockNoteView(props: UnlockNoteViewProps) {
         }}
       />
     </div>
+  );
+}
+
+type VoiceNoteViewProps = {
+  session: NewEditorSession;
+};
+
+function VoiceNoteView({ session }: VoiceNoteViewProps) {
+  const root = useRef<HTMLDivElement>(null);
+  const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+
+  useLayoutEffect(() => {
+    const element = root.current;
+    element?.classList.add("active");
+    return () => {
+      element?.classList.remove("active");
+    };
+  }, []);
+
+  const handleRecordingComplete = (blob: Blob) => {
+    setAudioBlob(blob);
+  };
+
+  const handleDone = async () => {
+    if (!audioBlob) return;
+
+    try {
+      // Convert audio blob to base64
+      const reader = new FileReader();
+      reader.readAsDataURL(audioBlob);
+      reader.onloadend = async () => {
+        const base64Audio = reader.result as string;
+        const timestamp = new Date().toLocaleString();
+
+        const currentSession = useEditorStore
+            .getState()
+            .getSession(session.id);
+          const noteId =
+            currentSession && "note" in currentSession
+              ? currentSession.note.id
+              : null;
+          const sessions = noteId
+            ? useEditorStore.getState().getSessionsForNote(noteId)
+            : [currentSession];
+
+          const currentSessionId = session.id;
+          const data = `<p><audio controls src="${base64Audio}"></audio></p>`;
+          for (const session of sessions) {
+            if (
+              session?.type !== "default" &&
+              session?.type !== "readonly" &&
+              session?.type !== "new"
+            )
+              continue;
+            if (!session.content) session.content = { type: "tiptap", data };
+            else session.content.data = data;
+
+            // update content in other tabs
+            if (session.id !== currentSessionId) {
+              const editor = useEditorManager.getState().getEditor(session.id);
+              editor?.editor?.updateContent(data);
+            }
+          }
+
+          logger.debug("scheduling save", {
+            id: session.id,
+            length: data.length
+          });
+          deferredSave(session.id, session.id, false, data);
+      };
+      reader.onerror = () => {
+        console.error("Error reading audio blob");
+        showToast("error", strings.failedToSaveVoiceNote());
+      };
+    } catch (error) {
+      console.error("Error saving voice note:", error);
+      showToast("error", strings.failedToSaveVoiceNote());
+    }
+  };
+
+  const handleSkip = async () => {
+    // Clear any recorded audio and create a new text note
+    setAudioBlob(null);
+    useEditorStore.getState().closeSession(session.id);
+    const currentSession = useEditorStore
+      .getState()
+      .getSession(session.id);
+    const noteId =
+      currentSession && "note" in currentSession
+        ? currentSession.note.id
+        : null;
+    const sessions = noteId
+      ? useEditorStore.getState().getSessionsForNote(noteId)
+      : [currentSession];
+
+    const currentSessionId = session.id;
+    const data = ``;
+    for (const session of sessions) {
+      if (
+        session?.type !== "default" &&
+        session?.type !== "readonly" &&
+        session?.type !== "new"
+      )
+        continue;
+      if (!session.content) session.content = { type: "tiptap", data };
+      else session.content.data = data;
+
+      // update content in other tabs
+      if (session.id !== currentSessionId) {
+        const editor = useEditorManager.getState().getEditor(session.id);
+        editor?.editor?.updateContent(data);
+      }
+    }
+
+    logger.debug("scheduling save", {
+      id: session.id,
+      length: data.length
+    });
+    deferredSave(session.id, session.id, false, data);
+    //useEditorStore.getState().openSession(noteId);
+  };
+
+  return (
+    <Flex
+      ref={root}
+      id="editorContainer"
+      sx={{
+        position: "relative",
+        alignSelf: "stretch",
+        overflow: "hidden",
+        flex: 1,
+        flexDirection: "column",
+        background: "background"
+      }}
+    >
+      <div className="dialogContainer" />
+      <Flex
+        sx={{
+          flex: 1,
+          flexDirection: "column",
+          alignItems: "center",
+          justifyContent: "center",
+          gap: 3,
+          p: 4
+        }}
+      >
+        <Text variant="heading" sx={{ mb: 4 }}>
+          {strings.recordingVoiceNote()}
+        </Text>
+        <Text variant="body" sx={{ textAlign: "center" }}>
+          {strings.voiceNoteInstructions()}
+        </Text>
+        <Flex
+          sx={{
+            width: "100%",
+            maxWidth: "600px",
+            height: "400px",
+            border: "1px solid",
+            borderColor: "border",
+            borderRadius: "default",
+            overflow: "hidden"
+          }}
+        >
+          <VoiceRecorder onRecordingComplete={handleRecordingComplete} />
+        </Flex>
+        <Flex sx={{ gap: 2, mt: 4 }}>
+          <Button
+            variant="secondary"
+            onClick={handleSkip}
+          >
+            {strings.skip()}
+          </Button>
+          <Button
+            variant="primary"
+            onClick={handleDone}
+            disabled={!audioBlob}
+          >
+            {strings.done()}
+          </Button>
+        </Flex>
+      </Flex>
+    </Flex>
   );
 }

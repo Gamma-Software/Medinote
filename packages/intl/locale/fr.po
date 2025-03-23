@@ -1472,6 +1472,14 @@ msgstr ""
 "\n"
 "**Utilisez ceci uniquement à des fins de dépannage. Si vous rencontrez des problèmes persistants, il est recommandé de nous contacter via support@streetwriters.co afin que nous puissions vous aider à les résoudre définitivement.**"
 
+#: src/strings.ts:2447
+msgid "Click the microphone button to start recording"
+msgstr ""
+
+#: src/strings.ts:2444
+msgid "Click the microphone button to start recording. Click again to stop."
+msgstr ""
+
 #: src/strings.ts:239
 msgid "Click to deselect"
 msgstr "Cliquez pour désélectionner"
@@ -2600,6 +2608,10 @@ msgstr "Échec de l'enregistrement de la tâche"
 #: src/strings.ts:792
 msgid "Failed to resolve download url"
 msgstr "Échec de la résolution de l'URL de téléchargement"
+
+#: src/strings.ts:2445
+msgid "Failed to save voice note. Please try again."
+msgstr ""
 
 #: src/strings.ts:761
 msgid "Failed to send recovery email"
@@ -4672,6 +4684,10 @@ msgstr "Recettes"
 msgid "Recommended"
 msgstr "Recommandé"
 
+#: src/strings.ts:2442
+msgid "Recording Voice Note"
+msgstr ""
+
 #: src/strings.ts:427
 msgid "Recover your account"
 msgstr "Récupérer votre compte"
@@ -5640,6 +5656,10 @@ msgstr "Passer et aller directement à l'application"
 msgid "Skip introduction"
 msgstr "Passer l'introduction"
 
+#: src/strings.ts:2450
+msgid "Skip recording and write note"
+msgstr ""
+
 #: src/strings.ts:1585
 msgid "Some exported notes are locked, Unlock to export them"
 msgstr "Certaines notes exportées sont verrouillées, déverrouillez-les pour les exporter"
@@ -5704,6 +5724,10 @@ msgstr "Démarrer réduit"
 msgid "Start over"
 msgstr "Recommencer"
 
+#: src/strings.ts:2448
+msgid "Start Recording"
+msgstr ""
+
 #: src/strings.ts:937
 msgid "Start writing to create a new note"
 msgstr "Commencez à écrire pour créer une nouvelle note"
@@ -5719,6 +5743,10 @@ msgstr "Commencez à écrire votre note..."
 #: src/strings.ts:2203
 msgid "Status"
 msgstr "Statut"
+
+#: src/strings.ts:2449
+msgid "Stop Recording"
+msgstr ""
 
 #: src/strings.ts:1529
 msgid "Streaming not supported"

@@ -1472,6 +1472,14 @@ msgstr ""
 "\n"
 "**Only use this for troubleshooting purposes. If you are having persistent issues, it is recommended that you reach out to us via support@streetwriters.co so we can help you resolve it permanently.**"
 
+#: src/strings.ts:2447
+msgid "Click the microphone button to start recording"
+msgstr "Click the microphone button to start recording"
+
+#: src/strings.ts:2444
+msgid "Click the microphone button to start recording. Click again to stop."
+msgstr "Click the microphone button to start recording. Click again to stop."
+
 #: src/strings.ts:239
 msgid "Click to deselect"
 msgstr "Click to deselect"
@@ -2600,6 +2608,10 @@ msgstr "Failed to register task"
 #: src/strings.ts:792
 msgid "Failed to resolve download url"
 msgstr "Failed to resolve download url"
+
+#: src/strings.ts:2445
+msgid "Failed to save voice note. Please try again."
+msgstr "Failed to save voice note. Please try again."
 
 #: src/strings.ts:761
 msgid "Failed to send recovery email"
@@ -4672,6 +4684,10 @@ msgstr "Recipes"
 msgid "Recommended"
 msgstr "Recommended"
 
+#: src/strings.ts:2442
+msgid "Recording Voice Note"
+msgstr "Recording Voice Note"
+
 #: src/strings.ts:427
 msgid "Recover your account"
 msgstr "Recover your account"
@@ -5640,6 +5656,10 @@ msgstr "Skip & go directly to the app"
 msgid "Skip introduction"
 msgstr "Skip introduction"
 
+#: src/strings.ts:2450
+msgid "Skip recording and write note"
+msgstr "Skip recording and write note"
+
 #: src/strings.ts:1585
 msgid "Some exported notes are locked, Unlock to export them"
 msgstr "Some exported notes are locked, Unlock to export them"
@@ -5704,6 +5724,10 @@ msgstr "Start minimized"
 msgid "Start over"
 msgstr "Start over"
 
+#: src/strings.ts:2448
+msgid "Start Recording"
+msgstr "Start Recording"
+
 #: src/strings.ts:937
 msgid "Start writing to create a new note"
 msgstr "Start writing to create a new note"
@@ -5719,6 +5743,10 @@ msgstr "Start writing your note..."
 #: src/strings.ts:2203
 msgid "Status"
 msgstr "Status"
+
+#: src/strings.ts:2449
+msgid "Stop Recording"
+msgstr "Stop Recording"
 
 #: src/strings.ts:1529
 msgid "Streaming not supported"
