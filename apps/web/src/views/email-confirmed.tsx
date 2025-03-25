@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -209,9 +209,9 @@ function BlogPromoBanner() {
         as="a"
         href={link}
         target="_blank"
-        
-        
-        
+
+
+
         sx={{ boxShadow: "2px 2px 15px 0px #00000044" ,fontSize: "title", fontWeight: "bold", width: "100%"}}
         onClick={() =>
           trackEvent(`Email verification blog promo`, "blog-promo")

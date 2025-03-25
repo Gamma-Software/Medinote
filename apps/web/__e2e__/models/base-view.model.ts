@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -95,7 +95,9 @@ export class BaseViewModel {
   // }
 
   async press(key: string) {
-    const itemList = this.list.locator(getTestId(`virtuoso-item-list`, "data-testid"));
+    const itemList = this.list.locator(
+      getTestId(`virtuoso-item-list`, "data-testid")
+    );
     await itemList.press(key);
     await this.page.waitForTimeout(300);
   }

@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -268,7 +268,7 @@ export function Importer() {
             </Box>
           </Flex>
           {/* <Flex my={1} sx={{ flexDirection: "column" }}>
-            
+
           </Flex> */}
           <Button
             variant="accent"

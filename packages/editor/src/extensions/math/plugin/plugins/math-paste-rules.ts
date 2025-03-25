@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -21,8 +21,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
  * Note that for some of the `ParseRule`s defined below,
  * we define a `getAttrs` function, which, other than
  * defining node attributes, can be used to describe complex
- * match conditions for a rule.  
- 
+ * match conditions for a rule.
+
  * Returning `false` from `ParseRule.getAttrs` prevents the
  * rule from matching, while returning `null` indicates that
  * the default set of note attributes should be used.

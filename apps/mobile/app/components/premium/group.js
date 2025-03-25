@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -33,14 +33,21 @@ export const Group = ({ item, index }) => {
     <View
       style={{
         paddingHorizontal: 12,
-        backgroundColor: index % 2 !== 0 ? colors.primary.background : colors.secondary.background,
+        backgroundColor:
+          index % 2 !== 0
+            ? colors.primary.background
+            : colors.secondary.background,
         paddingVertical: 40
       }}
     >
       {item?.pro ? (
         <ProTag
           size={SIZE.sm}
-          background={index % 2 === 0 ? colors.primary.background : colors.secondary.background}
+          background={
+            index % 2 === 0
+              ? colors.primary.background
+              : colors.secondary.background
+          }
         />
       ) : null}
       <Heading>{item.title}</Heading>
@@ -60,7 +67,11 @@ export const Group = ({ item, index }) => {
               {...item}
               detail={item.detail}
               pro={item.pro}
-              proTagBg={index % 2 === 0 ? colors.primary.background : colors.secondary.background}
+              proTagBg={
+                index % 2 === 0
+                  ? colors.primary.background
+                  : colors.secondary.background
+              }
             />
           ))}
         </ScrollView>

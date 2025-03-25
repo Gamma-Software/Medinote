@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -35,7 +35,13 @@ import { InsertBlock } from "./block.js";
 import { FontSize, FontFamily } from "./font.js";
 import { Alignment } from "./alignment.js";
 import { Headings } from "./headings.js";
-import { NumberedList, BulletList, Outdent, Indent, CheckList } from "./lists.js";
+import {
+  NumberedList,
+  BulletList,
+  Outdent,
+  Indent,
+  CheckList
+} from "./lists.js";
 import { TextDirection } from "./text-direction.js";
 import { Highlight, TextColor } from "./colors.js";
 import {

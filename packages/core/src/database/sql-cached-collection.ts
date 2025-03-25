@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -19,7 +19,11 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 
 import { MaybeDeletedItem, isDeleted } from "../types.js";
 import EventManager from "../utils/event-manager.js";
-import { DatabaseAccessor, DatabaseCollection, DatabaseSchema } from "./index.js";
+import {
+  DatabaseAccessor,
+  DatabaseCollection,
+  DatabaseSchema
+} from "./index.js";
 import { SQLCollection } from "./sql-collection.js";
 import { Kysely } from "@streetwriters/kysely";
 import { Sanitizer } from "./sanitizer.js";

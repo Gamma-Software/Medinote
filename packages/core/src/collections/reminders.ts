@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -276,7 +276,7 @@ export function createUpcomingReminderTimeQuery(unix = "now") {
   const lastSelectedDay = sql`(SELECT MAX(value) FROM json_each(selectedDays))`;
 
   const monthDate = sql`strftime('%m-%d%H:%M', date / 1000, 'unixepoch', 'localtime')`;
-  return sql`CASE 
+  return sql`CASE
         WHEN mode = 'once' THEN date / 1000
         WHEN recurringMode = 'year' THEN
             strftime('%s',
@@ -286,11 +286,11 @@ export function createUpcomingReminderTimeQuery(unix = "now") {
             )
         WHEN recurringMode = 'day' THEN
             strftime('%s',
-                ${dateNow} || ${time}, 
+                ${dateNow} || ${time},
                 IIF(${dateTime} <= ${dateTimeNow}, '+1 day', '+0 day'),
                 'utc'
             )
-        WHEN recurringMode = 'week' AND selectedDays IS NOT NULL AND json_array_length(selectedDays) > 0 THEN 
+        WHEN recurringMode = 'week' AND selectedDays IS NOT NULL AND json_array_length(selectedDays) > 0 THEN
             CASE
                 WHEN ${weekDayNow} > ${lastSelectedDay}
                 OR (${weekDayNow} == ${lastSelectedDay} AND ${dateTime} <= ${dateTimeNow})
@@ -316,7 +316,7 @@ export function createIsReminderActiveQuery(now = "now") {
   return sql`IIF(
     (disabled IS NULL OR disabled = 0)
     AND (mode != 'once'
-      OR datetime(date / 1000, 'unixepoch', 'localtime') > datetime(${now}) 
+      OR datetime(date / 1000, 'unixepoch', 'localtime') > datetime(${now})
       OR (snoozeUntil IS NOT NULL
         AND datetime(snoozeUntil / 1000, 'unixepoch', 'localtime') > datetime(${now}))
     ), 1, 0)`.$castTo<boolean>();

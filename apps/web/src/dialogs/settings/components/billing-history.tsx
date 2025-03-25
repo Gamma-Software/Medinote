@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -165,13 +165,13 @@ export function BillingHistory() {
   >
     <Flex sx={{ flexDirection: "column" }}>
       <Text variant="subtitle">Order #{transaction.order_id}</Text>
-     
+
     </Flex>
     <Flex sx={{ flexDirection: "column", alignItems: "end" }}>
       <Text variant="body">
         {transaction.amount} {transaction.currency}
       </Text>
-     
+
     </Flex>
   </Flex>
 </Flex> */

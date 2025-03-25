@@ -1,7 +1,7 @@
 /*
 This file is part of the Notesnook project (https://notesnook.com/)
 
-Copyright (C) 2023 Streetwriters (Private) Limited
+Copyright (C) 2025 Leaptech EURL
 
 This program is free software: you can redistribute it and/or modify
 it under the terms of the GNU General Public License as published by
@@ -57,12 +57,12 @@ and yet, we somehow manage to get by.<br>
   ],
   [
     `<html><body>
-    <!--StartFragment--><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Why switch from Gmail? 
+    <!--StartFragment--><span class="css-901oao css-16my406 r-poiln3 r-bcqeeo r-qvutc0">Why switch from Gmail?
 
     Not sacrificing features for more privacy, prefer using one app, in many public groups and channels (Telegram)
-    
+
     LibreOffice Slow &amp; buggy
-    
+
     Switched to Brave for the better Android app, more private out of the box &amp; unsure if uBlock Origin closes gap</span><!--EndFragment-->
     </body>
     </html>`
@@ -72,11 +72,11 @@ and yet, we somehow manage to get by.<br>
   <p style="line-height: 100%; margin-bottom: 0in">
   I am not talk9ing to you</p>
   <p style="line-height: 100%; margin-bottom: 0in"><br>
-  
+
   </p>
   <p style="line-height: 100%; margin-bottom: 0in">I am not talk9ing to
   you</p>
-  
+
   </div>`
   ],
   [
@@ -90,13 +90,13 @@ and yet, we somehow manage to get by.<br>
   [
     `<div>
     <!--StartFragment--><p><span>Hello</span></p><br><br><br><br><br><p><span >world</span></p><!--EndFragment-->
-    
+
     </div>`
   ],
   [
     `<div>
     <!--StartFragment--><meta charset="utf-8"><h1><span >Write notes</span></h1><br><p dir="ltr" ><span >Welcome of </span><a><span >Notesnook</span></a><span >, an syncing.</span></p><br><p dir="ltr" ><span >Enjoy the read!</span></p><br><p dir="ltr" ><span ><span ><img></span></span></p><br><p dir="ltr" ><span >vision?</span></p><br><p dir="ltr" ><span >everyone means</span></p><!--EndFragment-->
-    
+
     </div>`
   ],
   [
@@ -118,22 +118,22 @@ const codeBlocks = [
   <!--StartFragment--><p>Sure! Here's an implementation of a word counter for Thai that considers each syllable consisting of a consonant sound followed by a vowel sound as a word:</p><pre><div class="bg-black rounded-md mb-4"><div class="flex items-center relative text-gray-200 bg-gray-800 px-4 py-2 text-xs font-sans justify-between rounded-t-md"><span>javascript</span></div></div></pre><pre><div class="bg-black rounded-md mb-4"><div class="p-4 overflow-y-auto"><code class="!whitespace-pre hljs language-javascript"><span class="hljs-keyword">function</span> <span class="hljs-title function_">countThaiWords</span>(<span class="hljs-params">text</span>) {
     <span class="hljs-comment">// define a regular expression to match Thai syllables</span>
     <span class="hljs-keyword">const</span> thaiSyllableRegex = <span class="hljs-regexp">/[\u0E01-\u0E3A\u0E40-\u0E5B]+[\u0E00-\u0E7F]?/g</span>;
-  
+
     <span class="hljs-comment">// count the number of matches of the Thai syllable regex in the text</span>
     <span class="hljs-keyword">const</span> matches = text.<span class="hljs-title function_">match</span>(thaiSyllableRegex) || [];
     <span class="hljs-keyword">const</span> wordCount = matches.<span class="hljs-property">length</span>;
-  
+
     <span class="hljs-comment">// return the number of words</span>
     <span class="hljs-keyword">return</span> wordCount;
   }
-  
+
   <span class="hljs-comment">// example usage</span>
   <span class="hljs-keyword">const</span> text = <span class="hljs-string">"สวัสดีค่ะยินดีต้อนรับเข้าสู่โลกของฉัน"</span>;
   <span class="hljs-keyword">const</span> wordCount = <span class="hljs-title function_">countThaiWords</span>(text);
   <span class="hljs-variable language_">console</span>.<span class="hljs-title function_">log</span>(<span class="hljs-string">\`Word count: <span class="hljs-subst">\${wordCount}</span>\`</span>);
   <span class="hljs-comment">// output: Word count: 9</span>
   </code></div></div></pre><p>This implementation defines a regular expression to match Thai syllables, which are composed of one or more Thai characters. It then uses the <code>match</code> function of the <code>String</code> object to count the number of matches of the Thai syllable regex in the input text.</p><p>Note that this implementation assumes that each syllable consisting of a consonant sound followed by a vowel sound is considered a word in Thai. This may not always be accurate, as some words in Thai may consist of multiple syllables, and some syllables may be used as prefixes or suffixes to modify other words. However, this approach should work well for many cases where each syllable is considered a separate word.</p><!--EndFragment-->
-  
+
   </div>`
 ];
 for (const codeBlock of codeBlocks) {
@@ -147,7 +147,7 @@ for (const codeBlock of codeBlocks) {
 const checkLists = [
   `<div>
     <!--StartFragment--><meta charset="utf-8"><ul  id="docs-internal-guid-0d9a5db3-7fff-ab55-e7ca-b178e1031970"><li dir="ltr" role="checkbox" aria-checked="false"  aria-level="1"><img    alt="unchecked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Adsjkfhasdf</span></p></li><li dir="ltr" role="checkbox" aria-checked="false"  aria-level="1"><img    alt="unchecked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Asdfsadf</span></p></li><li dir="ltr" role="checkbox" aria-checked="true"  aria-level="1"><img    alt="checked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Asdfsda</span></p></li><li dir="ltr" role="checkbox" aria-checked="true"  aria-level="1"><img    alt="checked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Fasd</span></p></li><li dir="ltr" role="checkbox" aria-checked="true"  aria-level="1"><img    alt="checked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Fasd</span></p></li><li dir="ltr" role="checkbox" aria-checked="false"  aria-level="1"><img    alt="unchecked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >F</span></p></li><li dir="ltr" role="checkbox" aria-checked="true"  aria-level="1"><img    alt="checked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >akcasb</span></p></li><ul ><li dir="ltr" role="checkbox" aria-checked="true"  aria-level="2"><img    alt="checked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Asdf</span></p></li><li dir="ltr" role="checkbox" aria-checked="false"  aria-level="2"><img    alt="unchecked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Asdcasdc</span></p></li><li dir="ltr" role="checkbox" aria-checked="false"  aria-level="2"><img    alt="unchecked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >sdac</span></p></li></ul><li dir="ltr" role="checkbox" aria-checked="false"  aria-level="1"><img    alt="unchecked" aria-roledescription="checkbox" ><p dir="ltr"  role="presentation"><span >Asdfsda</span></p></li></ul><!--EndFragment-->
-    
+
     </div>`
 ];
 for (const checkList of checkLists) {
