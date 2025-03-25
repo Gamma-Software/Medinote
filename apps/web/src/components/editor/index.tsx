@@ -74,7 +74,6 @@ import { strings } from "@notesnook/intl";
 import { onPageVisibilityChanged } from "../../utils/page-visibility";
 import { Pane, SplitPane } from "../split-pane";
 import { TITLE_BAR_HEIGHT } from "../title-bar";
-import { NoteTypeSelector } from "../note-type-selector";
 import { VoiceRecorder } from "../voice-recorder";
 
 const PDFPreview = React.lazy(() => import("../pdf-preview"));
@@ -1074,7 +1073,6 @@ function VoiceNoteView({ session }: VoiceNoteViewProps) {
   const handleSkip = async () => {
     // Clear any recorded audio and create a new text note
     setAudioBlob(null);
-    useEditorStore.getState().closeSession(session.id);
     const currentSession = useEditorStore
       .getState()
       .getSession(session.id);

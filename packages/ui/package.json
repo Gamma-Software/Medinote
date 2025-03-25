@@ -20,20 +20,20 @@
     "url": "git://github.com/streetwriters/notesnook.git"
   },
   "dependencies": {
-    "@notesnook/theme": "file:../theme"
+    "@notesnook/theme": "file:../theme",
+    "@types/react": "18.3.5",
+    "@types/react-dom": "18.3.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1"
   },
   "devDependencies": {
     "mac-scrollbar": "0.13.6",
     "@mdi/js": "7.4.47",
-    "@types/react": "18.3.5",
-    "@types/react-dom": "18.3.0",
     "@types/react-modal": "3.16.3",
     "@theme-ui/components": "0.16.1",
     "@theme-ui/core": "0.16.1",
     "@emotion/react": "11.11.1",
-    "react-modal": "3.16.3",
-    "react": "18.3.1",
-    "react-dom": "18.3.1"
+    "react-modal": "3.16.3"
   },
   "peerDependencies": {
     "mac-scrollbar": ">=0.10",

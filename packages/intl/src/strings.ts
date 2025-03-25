@@ -2446,6 +2446,5 @@ Use this if changes from other devices are not appearing on this device. This wi
   voiceRecordingPlaceholder: () =>
     t`Click the microphone button to start recording`,
   startRecording: () => t`Start Recording`,
-  stopRecording: () => t`Stop Recording`,
-  skip: () => t`Skip recording and write note`
+  stopRecording: () => t`Stop Recording`
 };

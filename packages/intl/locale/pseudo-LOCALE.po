@@ -5656,10 +5656,6 @@ msgstr "Skip & go directly to the app"
 msgid "Skip introduction"
 msgstr "Skip introduction"
 
-#: src/strings.ts:2450
-msgid "Skip recording and write note"
-msgstr ""
-
 #: src/strings.ts:1585
 msgid "Some exported notes are locked, Unlock to export them"
 msgstr "Some exported notes are locked, Unlock to export them"

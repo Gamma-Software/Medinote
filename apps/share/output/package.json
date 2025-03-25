@@ -1,1 +1,0 @@
-{"name":"@notesnook/share","version":"1.2.4","type":"module","scripts":{"start":"bun server.ts"},"dependencies":{"@napi-rs/canvas":"0.1.59","@remix-run/server-runtime":"^2.15.0"}}
