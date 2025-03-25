@@ -46,7 +46,7 @@ export type TipContext =
   | "search"
   | "favorites"
   | "reminders"
-  | "shares"
+  | "monographs"
   | "trash"
   | "attachments";
 
@@ -113,16 +113,16 @@ const tips: Tip[] = [
     contexts: ["notes", "notebooks", "tags"]
   },
   {
-    text: "Shares enable you to share your notes in a secure and private way.",
-    contexts: ["shares"]
+    text: "Monographs enable you to share your notes in a secure and private way.",
+    contexts: ["monographs"]
   },
   {
-    text: "Shares can be encrypted with a secret key and shared with anyone.",
-    contexts: ["shares"]
+    text: "Monographs can be encrypted with a secret key and shared with anyone.",
+    contexts: ["monographs"]
   },
   {
     text: "Published notes can be encrypted. Which means only you and the person you share the password with can read them.",
-    contexts: ["shares"]
+    contexts: ["monographs"]
   },
   {
     text: "You can pin frequently used Notebooks to the Side Menu to quickly access them.",
@@ -169,14 +169,14 @@ const DEFAULT_TIPS: Record<TipContext, Omit<Tip, "contexts">> = {
     text: "You have no attachments."
   },
   favorites: { text: "Notes you favorite will appear here." },
-  shares: {
+  monographs: {
     text: "You haven't published any notes yet.",
     button: {
-      title: "What are shares?",
+      title: "What are monographs?",
       icon: ArrowTopRight,
       onClick() {
         window.open(
-          "https://help.notesnook.com/publish-notes-with-shares",
+          "https://help.notesnook.com/publish-notes-with-monographs",
           "_blank"
         );
       }

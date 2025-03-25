@@ -76,7 +76,7 @@ export type RouteParams = {
   TaggedNotes: NotesScreenParams;
   ColoredNotes: NotesScreenParams;
   TopicNotes: NotesScreenParams;
-  Shares: NotesScreenParams;
+  Monographs: NotesScreenParams;
   AppLock: AppLockRouteParams;
   Reminders: GenericRouteParam;
   SettingsGroup: GenericRouteParam;

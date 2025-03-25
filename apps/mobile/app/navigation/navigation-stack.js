@@ -32,7 +32,7 @@ import Home from "../screens/home";
 import NotebookScreen from "../screens/notebook";
 import Notebooks from "../screens/notebooks";
 import { ColoredNotes } from "../screens/notes/colored";
-import { Shares } from "../screens/notes/shares";
+import { Monographs } from "../screens/notes/monographs";
 import { TaggedNotes } from "../screens/notes/tagged";
 import Reminders from "../screens/reminders";
 import { Search } from "../screens/search";
@@ -112,13 +112,13 @@ const _Tabs = () => {
       <NativeStack.Screen name="ColoredNotes" component={ColoredNotes} />
       <NativeStack.Screen name="Reminders" component={Reminders} />
       <NativeStack.Screen
-        name="Shares"
+        name="Monographs"
         initialParams={{
-          item: { type: "share" },
+          item: { type: "monograph" },
           canGoBack: false,
-          title: strings.shares()
+          title: strings.monographs()
         }}
-        component={Shares}
+        component={Monographs}
       />
       <NativeStack.Screen name="Notebook" component={NotebookScreen} />
       <NativeStack.Screen name="Search" component={Search} />

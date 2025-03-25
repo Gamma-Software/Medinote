@@ -49,7 +49,7 @@ type Context =
   | "properties"
   | "first-note"
   | "first-editor-launch"
-  | "shares"
+  | "monographs"
   | "trash"
   | "topics";
 

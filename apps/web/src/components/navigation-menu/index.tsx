@@ -108,9 +108,9 @@ const routes: Route[] = [
     icon: Reminders
   },
   {
-    id: "shares",
-    title: strings.routes.Shares(),
-    path: "/shares",
+    id: "monographs",
+    title: strings.routes.Monographs(),
+    path: "/monographs",
     icon: Monographs
   },
   { id: "trash", title: strings.routes.Trash(), path: "/trash", icon: Trash }

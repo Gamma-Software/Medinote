@@ -126,10 +126,10 @@ const staticCommands: Command[] = [
     type: "command"
   },
   {
-    id: "shares",
-    title: strings.dataTypesPluralCamelCase.share(),
+    id: "monographs",
+    title: strings.dataTypesPluralCamelCase.monograph(),
     icon: ArrowTopRight,
-    action: () => navigate("/shares"),
+    action: () => navigate("/monographs"),
     group: strings.navigate(),
     type: "command"
   },

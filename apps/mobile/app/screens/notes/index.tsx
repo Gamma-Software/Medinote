@@ -195,17 +195,17 @@ const NotesPage = ({
       <Header
         renderedInRoute={route.name}
         title={
-          route.name === "Shares" ? strings.routes[route.name]() : title
+          route.name === "Monographs" ? strings.routes[route.name]() : title
         }
         canGoBack={params?.current?.canGoBack}
         hasSearch={true}
         id={
-          route.name === "Shares" ? "Shares" : params?.current.item?.id
+          route.name === "Monographs" ? "Monographs" : params?.current.item?.id
         }
         onSearch={() => {
           const selector =
-            route.name === "Shares"
-              ? db.shares.all
+            route.name === "Monographs"
+              ? db.monographs.all
               : db.relations.from(params.current.item, "note").selector;
 
           Navigation.push("Search", {

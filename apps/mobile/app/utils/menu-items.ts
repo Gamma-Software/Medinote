@@ -17,7 +17,7 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { Shares } from "../screens/notes/shares";
+import { Monographs } from "../screens/notes/monographs";
 export const MenuItemsList = [
   {
     id: "notes",
@@ -50,12 +50,12 @@ export const MenuItemsList = [
     close: true
   },
   {
-    id: "shares",
-    name: "Shares",
+    id: "monographs",
+    name: "Monographs",
     icon: "text-box-multiple-outline",
     close: true,
     func: () => {
-      Shares.navigate();
+      Monographs.navigate();
     }
   },
   {

@@ -75,7 +75,7 @@ import {
 import { CSS } from "@dnd-kit/utilities";
 import { AppEventManager, AppEvents } from "../../common/app-events";
 import { useWindowControls } from "../../hooks/use-window-controls";
-import { useStore as useShareStore } from "../../stores/share-store";
+import { useStore as useMonographStore } from "../../stores/monograph-store";
 import { useStore as useUserStore } from "../../stores/user-store";
 import { db } from "../../common/db";
 import { showPublishView } from "../publish-view";
@@ -98,11 +98,11 @@ export function EditorActionBar() {
     activeSession?.id ? store.editors[activeSession?.id] : undefined
   );
   const isLoggedIn = useUserStore((store) => store.isLoggedIn);
-  const shares = useShareStore((store) => store.shares);
+  const monographs = useMonographStore((store) => store.monographs);
   const isNotePublished =
     activeSession &&
     "note" in activeSession &&
-    db.shares.isPublished(activeSession.note.id);
+    db.monographs.isPublished(activeSession.note.id);
   const isMobile = useMobile();
   const isTablet = useTablet();
 

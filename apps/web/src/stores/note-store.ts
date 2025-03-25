@@ -139,7 +139,7 @@ export function notesFromContext(context: Context) {
         .selector;
     case "favorite":
       return db.notes.favorites;
-    case "shares":
-      return db.shares.all;
+    case "monographs":
+      return db.monographs.all;
   }
 }

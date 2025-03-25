@@ -22,48 +22,48 @@ import NotesPage from ".";
 import { db } from "../../common/database";
 import Navigation, { NavigationProps } from "../../services/navigation";
 import { NotesScreenParams } from "../../stores/use-navigation-store";
-import { openSharesWebpage } from "./common";
+import { openMonographsWebpage } from "./common";
 import { strings } from "@notesnook/intl";
 
-export const SHARE_PLACEHOLDER_DATA = {
-  title: strings.yourShares(),
-  paragraph: strings.sharesEmpty(),
-  button: strings.learnMoreShares(),
-  action: openSharesWebpage,
-  loading: strings.loadingShares(),
-  type: "share",
+export const MONOGRAPH_PLACEHOLDER_DATA = {
+  title: strings.yourMonographs(),
+  paragraph: strings.monographsEmpty(),
+  button: strings.learnMoreMonographs(),
+  action: openMonographsWebpage,
+  loading: strings.loadingMonographs(),
+  type: "monograph",
   buttonIcon: "information-outline"
 };
 
-export const Shares = ({
+export const Monographs = ({
   navigation,
   route
-}: NavigationProps<"Shares">) => {
+}: NavigationProps<"Monographs">) => {
   return (
     <NotesPage
       navigation={navigation}
       route={route}
-      get={Shares.get}
-      placeholder={SHARE_PLACEHOLDER_DATA}
-      onPressFloatingButton={openSharesWebpage}
+      get={Monographs.get}
+      placeholder={MONOGRAPH_PLACEHOLDER_DATA}
+      onPressFloatingButton={openMonographsWebpage}
       canGoBack={route.params?.canGoBack}
       focusControl={true}
     />
   );
 };
 
-Shares.get = async (params?: NotesScreenParams, grouped = true) => {
+Monographs.get = async (params?: NotesScreenParams, grouped = true) => {
   if (!grouped) {
-    return await db.shares.all.items();
+    return await db.monographs.all.items();
   }
 
-  return await db.shares.all.grouped(db.settings.getGroupOptions("notes"));
+  return await db.monographs.all.grouped(db.settings.getGroupOptions("notes"));
 };
 
-Shares.navigate = (canGoBack?: boolean) => {
-  Navigation.navigate<"Shares">("Shares", {
-    item: { type: "share" } as any,
+Monographs.navigate = (canGoBack?: boolean) => {
+  Navigation.navigate<"Monographs">("Monographs", {
+    item: { type: "monograph" } as any,
     canGoBack: canGoBack as boolean,
-    title: strings.dataTypesPluralCamelCase.share()
+    title: strings.dataTypesPluralCamelCase.monograph()
   });
 };

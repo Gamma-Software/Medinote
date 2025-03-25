@@ -49,7 +49,7 @@ navigation:
   - path: lock-notes-with-private-vault.md
   - path: note-version-history.md
 
-  - path: publish-notes-with-share.md
+  - path: publish-notes-with-monographs.md
 
   - path: how-is-my-data-encrypted.md
   - path: recovering-your-account.md

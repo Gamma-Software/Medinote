@@ -3298,13 +3298,13 @@ msgstr "Learn how this works."
 msgid "Learn more"
 msgstr "Learn more"
 
-#: src/strings.ts:272
-msgid "Learn more about Notesnook Share"
-msgstr "Learn more about Notesnook Share"
-
 #: src/strings.ts:962
-msgid "Learn more about Shares"
-msgstr "Learn more about Shares"
+msgid "Learn more about Monographs"
+msgstr ""
+
+#: src/strings.ts:272
+msgid "Learn more about Notesnook Monograph"
+msgstr ""
 
 #: src/strings.ts:1543
 msgid "Legal"
@@ -3415,6 +3415,10 @@ msgstr "Loading trash"
 msgid "Loading your favorites"
 msgstr "Loading your favorites"
 
+#: src/strings.ts:958
+msgid "Loading your monographs"
+msgstr ""
+
 #: src/strings.ts:956
 msgid "Loading your notebooks"
 msgstr "Loading your notebooks"
@@ -3426,10 +3430,6 @@ msgstr "Loading your notes"
 #: src/strings.ts:957
 msgid "Loading your reminders"
 msgstr "Loading your reminders"
-
-#: src/strings.ts:958
-msgid "Loading your shares"
-msgstr "Loading your shares"
 
 #: src/strings.ts:955
 msgid "Loading your tags"
@@ -3636,6 +3636,28 @@ msgstr "Mon"
 #: src/strings.ts:605
 msgid "Monday"
 msgstr "Monday"
+
+#: src/strings.ts:1612
+msgid "Monograph server"
+msgstr ""
+
+#: src/strings.ts:858
+msgid "Monograph URL copied"
+msgstr ""
+
+#: src/strings.ts:322
+#: src/strings.ts:926
+#: src/strings.ts:1511
+msgid "Monographs"
+msgstr ""
+
+#: src/strings.ts:1404
+msgid "Monographs can be encrypted with a secret key and shared with anyone."
+msgstr ""
+
+#: src/strings.ts:1399
+msgid "Monographs enable you to share your notes in a secure and private way."
+msgstr ""
 
 #: src/strings.ts:1821
 msgid "month"
@@ -5212,6 +5234,10 @@ msgstr "Search in Favorites"
 msgid "Search in Home"
 msgstr "Search in Home"
 
+#: src/strings.ts:38
+msgid "Search in Monographs"
+msgstr ""
+
 #: src/strings.ts:29
 msgid "Search in Notebook"
 msgstr "Search in Notebook"
@@ -5235,10 +5261,6 @@ msgstr "Search in Search"
 #: src/strings.ts:33
 msgid "Search in Settings"
 msgstr "Search in Settings"
-
-#: src/strings.ts:38
-msgid "Search in Shares"
-msgstr "Search in Shares"
 
 #: src/strings.ts:34
 msgid "Search in Tags"
@@ -5574,31 +5596,9 @@ msgstr "Share note"
 msgid "Share Notesnook with friends!"
 msgstr "Share Notesnook with friends!"
 
-#: src/strings.ts:1612
-msgid "Share server"
-msgstr "Share server"
-
 #: src/strings.ts:585
 msgid "Share to cloud"
 msgstr "Share to cloud"
-
-#: src/strings.ts:858
-msgid "Share URL copied"
-msgstr "Share URL copied"
-
-#: src/strings.ts:322
-#: src/strings.ts:926
-#: src/strings.ts:1511
-msgid "Shares"
-msgstr "Shares"
-
-#: src/strings.ts:1404
-msgid "Shares can be encrypted with a secret key and shared with anyone."
-msgstr "Shares can be encrypted with a secret key and shared with anyone."
-
-#: src/strings.ts:1399
-msgid "Shares enable you to share your notes in a secure and private way."
-msgstr "Shares enable you to share your notes in a secure and private way."
 
 #: src/strings.ts:292
 msgid "shortcut"
@@ -6875,8 +6875,8 @@ msgid "You have not favorited any notes yet"
 msgstr "You have not favorited any notes yet"
 
 #: src/strings.ts:952
-msgid "You have not published any shares yet"
-msgstr "You have not published any shares yet"
+msgid "You have not published any monographs yet"
+msgstr ""
 
 #: src/strings.ts:951
 msgid "You have not set any reminders yet"
@@ -7003,6 +7003,10 @@ msgstr "Your free trial is ending soon"
 msgid "Your full name"
 msgstr "Your full name"
 
+#: src/strings.ts:946
+msgid "Your monographs"
+msgstr ""
+
 #: src/strings.ts:1294
 msgid "Your name is stored 100% end-to-end encrypted and only visible to you."
 msgstr "Your name is stored 100% end-to-end encrypted and only visible to you."
@@ -7042,10 +7046,6 @@ msgstr "Your reminders"
 #: src/strings.ts:99
 msgid "Your session has expired. Please enter password for {obfuscatedEmail} to continue."
 msgstr "Your session has expired. Please enter password for {obfuscatedEmail} to continue."
-
-#: src/strings.ts:946
-msgid "Your shares"
-msgstr "Your shares"
 
 #: src/strings.ts:1020
 msgid "Your subscription ends on {date}"

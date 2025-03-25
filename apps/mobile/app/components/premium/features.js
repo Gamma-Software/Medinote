@@ -236,7 +236,7 @@ export const features = [
       },
       {
         highlight: "Self destruct",
-        content: "shares",
+        content: "monographs",
         icon: "bomb"
       }
     ]
@@ -309,7 +309,7 @@ export const features = [
 ];
 
 /**
- *
+ * 
       {
         highlight: 'Private vault',
         content: 'for notes',

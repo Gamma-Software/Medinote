@@ -36,7 +36,7 @@ export type Context =
     }
   | NotebookContext
   | {
-      type: "favorite" | "shares";
+      type: "favorite" | "monographs";
     };
 
 export type WithDateEdited<T> = { items: T[]; dateEdited: number };

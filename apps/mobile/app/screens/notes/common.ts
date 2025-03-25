@@ -43,9 +43,11 @@ export function toCamelCase(title: string) {
   return title.slice(0, 1).toUpperCase() + title.slice(1);
 }
 
-export function openSharesWebpage() {
+export function openMonographsWebpage() {
   try {
-    openLinkInBrowser("https://help.notesnook.com/publish-notes-with-shares");
+    openLinkInBrowser(
+      "https://help.notesnook.com/publish-notes-with-monographs"
+    );
   } catch (e) {
     console.error(e);
   }

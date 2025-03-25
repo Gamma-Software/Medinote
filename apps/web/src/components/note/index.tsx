@@ -49,7 +49,7 @@ import { MoveNoteDialog } from "../../dialogs/move-note-dialog";
 import { isUserPremium } from "../../hooks/use-is-user-premium";
 import { navigate } from "../../navigation";
 import { useEditorStore } from "../../stores/editor-store";
-import { useStore as useShareStore } from "../../stores/share-store";
+import { useStore as useMonographStore } from "../../stores/monograph-store";
 import { store } from "../../stores/note-store";
 import { store as selectionStore } from "../../stores/selection-store";
 import { store as tagStore } from "../../stores/tag-store";
@@ -431,10 +431,10 @@ export const noteMenuItems: (
     {
       type: "button",
       key: "publish",
-      isDisabled: !db.shares.isPublished(note.id) && context?.locked,
+      isDisabled: !db.monographs.isPublished(note.id) && context?.locked,
       icon: Publish.path,
       title: strings.publish(),
-      menu: db.shares.isPublished(note.id)
+      menu: db.monographs.isPublished(note.id)
         ? {
             items: [
               {
@@ -443,7 +443,7 @@ export const noteMenuItems: (
                 title: strings.open(),
                 icon: OpenInNew.path,
                 onClick: async () => {
-                  const url = `${hosts.SHARE_HOST}/${note.id}`;
+                  const url = `${hosts.MONOGRAPH_HOST}/${note.id}`;
                   window.open(url, "_blank");
                 }
               },
@@ -453,7 +453,7 @@ export const noteMenuItems: (
                 title: strings.copyLink(),
                 icon: Copy.path,
                 onClick: async () => {
-                  const url = `${hosts.SHARE_HOST}/${note.id}`;
+                  const url = `${hosts.MONOGRAPH_HOST}/${note.id}`;
                   await writeToClipboard({
                     "text/plain": url,
                     "text/html": `<a href="${url}">${note.title}</a>`,
@@ -471,7 +471,7 @@ export const noteMenuItems: (
                 title: strings.unpublish(),
                 icon: Publish.path,
                 onClick: async () => {
-                  await useShareStore.getState().unpublish(note.id);
+                  await useMonographStore.getState().unpublish(note.id);
                 }
               }
             ]
@@ -591,7 +591,7 @@ export const noteMenuItems: (
       title: strings.moveToTrash(),
       variant: "dangerous",
       icon: Trash.path,
-      isDisabled: ids.length === 1 && db.shares.isPublished(note.id),
+      isDisabled: ids.length === 1 && db.monographs.isPublished(note.id),
       onClick: () => Multiselect.moveNotesToTrash(ids, ids.length > 1),
       multiSelect: true
     }
