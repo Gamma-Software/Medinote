@@ -17,39 +17,109 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { IconButton } from "@theme-ui/components";
+import { IconButton, Box, Text } from "@theme-ui/components";
 import MDIIcon from "@mdi/react";
-import { mdiMicrophone } from "@mdi/js";
+import { mdiMicrophone, mdiPlaylistMusic } from "@mdi/js";
+import { useState, useRef, useCallback } from "react";
+import { AudioLibraryDialog } from "./audio-library-dialog";
+import { useEditorStore, SaveState } from "../stores/editor-store";
+
+const LONG_PRESS_DURATION = 500; // milliseconds
 
 export function MicrophoneButton() {
-  const handleClick = () => {
-    console.log("Microphone button clicked!");
-  };
+  const [showTooltip, setShowTooltip] = useState(false);
+  const longPressTimer = useRef<NodeJS.Timeout>();
+  const [isLongPress, setIsLongPress] = useState(false);
+
+  const handleMouseDown = useCallback(() => {
+    longPressTimer.current = setTimeout(() => {
+      setIsLongPress(true);
+      AudioLibraryDialog.show();
+    }, LONG_PRESS_DURATION);
+  }, []);
+
+  const handleMouseUp = useCallback(() => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+    }
+
+    // Only trigger click action if it wasn't a long press
+    if (!isLongPress) {
+      const activeSession = useEditorStore.getState().getActiveSession();
+      if (activeSession) {
+        const sessionId = `voice_note_${Date.now()}`;
+        useEditorStore.getState().addSession({
+          type: "new",
+          id: sessionId,
+          tabId: activeSession.tabId,
+          saveState: SaveState.NotSaved
+        });
+      }
+    }
+
+    setIsLongPress(false);
+  }, [isLongPress]);
+
+  const handleMouseLeave = useCallback(() => {
+    if (longPressTimer.current) {
+      clearTimeout(longPressTimer.current);
+    }
+    setShowTooltip(false);
+    setIsLongPress(false);
+  }, []);
 
   return (
-    <IconButton
-      onClick={handleClick}
-      sx={{
-        position: "fixed",
-        bottom: "10px",
-        right: "10px",
-        zIndex: 1000,
-        backgroundColor: "primary",
-        color: "white",
-        borderRadius: "50%",
-        width: "40px",
-        height: "40px",
-        display: "flex",
-        alignItems: "center",
-        justifyContent: "center",
-        cursor: "pointer",
-        "&:hover": {
+    <Box sx={{ position: "relative" }}>
+      <IconButton
+        onMouseDown={handleMouseDown}
+        onMouseUp={handleMouseUp}
+        onMouseLeave={handleMouseLeave}
+        onMouseEnter={() => setShowTooltip(true)}
+        sx={{
+          position: "fixed",
+          bottom: "10px",
+          right: "10px",
+          zIndex: 1000,
           backgroundColor: "primary",
-          opacity: 0.9
-        }
-      }}
-    >
-      <MDIIcon path={mdiMicrophone} size={1} color="currentColor" />
-    </IconButton>
+          color: "white",
+          borderRadius: "50%",
+          width: "40px",
+          height: "40px",
+          display: "flex",
+          alignItems: "center",
+          justifyContent: "center",
+          cursor: "pointer",
+          "&:hover": {
+            backgroundColor: "primary",
+            opacity: 0.9
+          }
+        }}
+      >
+        <MDIIcon
+          path={isLongPress ? mdiPlaylistMusic : mdiMicrophone}
+          size={1}
+          color="currentColor"
+        />
+      </IconButton>
+      {showTooltip && (
+        <Text
+          sx={{
+            position: "fixed",
+            bottom: "60px",
+            right: "10px",
+            backgroundColor: "background",
+            color: "text",
+            padding: "8px",
+            borderRadius: "4px",
+            fontSize: "12px",
+            boxShadow: "0 2px 4px rgba(0,0,0,0.1)",
+            zIndex: 1000,
+            whiteSpace: "nowrap"
+          }}
+        >
+          Click to record • Hold to view recordings
+        </Text>
+      )}
+    </Box>
   );
 }
