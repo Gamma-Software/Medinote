@@ -75,6 +75,7 @@ import { onPageVisibilityChanged } from "../../utils/page-visibility";
 import { Pane, SplitPane } from "../split-pane";
 import { TITLE_BAR_HEIGHT } from "../title-bar";
 import { VoiceRecorder } from "../voice-recorder";
+import { saveBase64Audio } from "../../utils/audio-utils";
 
 const PDFPreview = React.lazy(() => import("../pdf-preview"));
 
@@ -1000,6 +1001,7 @@ type VoiceNoteViewProps = {
 function VoiceNoteView({ session }: VoiceNoteViewProps) {
   const root = useRef<HTMLDivElement>(null);
   const [audioBlob, setAudioBlob] = useState<Blob | null>(null);
+  const [isSaving, setIsSaving] = useState(false);
 
   useLayoutEffect(() => {
     const element = root.current;
@@ -1014,9 +1016,10 @@ function VoiceNoteView({ session }: VoiceNoteViewProps) {
   };
 
   const handleDone = async () => {
-    if (!audioBlob) return;
+    if (!audioBlob || isSaving) return;
 
     try {
+      setIsSaving(true);
       // Convert audio blob to base64
       const reader = new FileReader();
       reader.readAsDataURL(audioBlob);
@@ -1024,41 +1027,49 @@ function VoiceNoteView({ session }: VoiceNoteViewProps) {
         const base64Audio = reader.result as string;
         const timestamp = new Date().toLocaleString();
 
+        // Save the audio file
+        const audioPath = await saveBase64Audio(
+          base64Audio,
+          `voice_note_${timestamp}`,
+          audioBlob.type
+        );
+        console.debug("Audio saved at:", audioPath);
+
         const currentSession = useEditorStore
-            .getState()
-            .getSession(session.id);
-          const noteId =
-            currentSession && "note" in currentSession
-              ? currentSession.note.id
-              : null;
-          const sessions = noteId
-            ? useEditorStore.getState().getSessionsForNote(noteId)
-            : [currentSession];
+          .getState()
+          .getSession(session.id);
+        const noteId =
+          currentSession && "note" in currentSession
+            ? currentSession.note.id
+            : null;
+        const sessions = noteId
+          ? useEditorStore.getState().getSessionsForNote(noteId)
+          : [currentSession];
 
-          const currentSessionId = session.id;
-          const data = `<p><audio controls src="${base64Audio}"></audio></p>`;
-          for (const session of sessions) {
-            if (
-              session?.type !== "default" &&
-              session?.type !== "readonly" &&
-              session?.type !== "new"
-            )
-              continue;
-            if (!session.content) session.content = { type: "tiptap", data };
-            else session.content.data = data;
+        const currentSessionId = session.id;
+        const data = `<p><audio controls src="${base64Audio}"></audio></p>`;
+        for (const session of sessions) {
+          if (
+            session?.type !== "default" &&
+            session?.type !== "readonly" &&
+            session?.type !== "new"
+          )
+            continue;
+          if (!session.content) session.content = { type: "tiptap", data };
+          else session.content.data = data;
 
-            // update content in other tabs
-            if (session.id !== currentSessionId) {
-              const editor = useEditorManager.getState().getEditor(session.id);
-              editor?.editor?.updateContent(data);
-            }
+          // update content in other tabs
+          if (session.id !== currentSessionId) {
+            const editor = useEditorManager.getState().getEditor(session.id);
+            editor?.editor?.updateContent(data);
           }
+        }
 
-          logger.debug("scheduling save", {
-            id: session.id,
-            length: data.length
-          });
-          deferredSave(session.id, session.id, false, data);
+        logger.debug("scheduling save", {
+          id: session.id,
+          length: data.length
+        });
+        deferredSave(session.id, session.id, false, data);
       };
       reader.onerror = () => {
         console.error("Error reading audio blob");
@@ -1067,6 +1078,8 @@ function VoiceNoteView({ session }: VoiceNoteViewProps) {
     } catch (error) {
       console.error("Error saving voice note:", error);
       showToast("error", strings.failedToSaveVoiceNote());
+    } finally {
+      setIsSaving(false);
     }
   };
 
@@ -1108,7 +1121,6 @@ function VoiceNoteView({ session }: VoiceNoteViewProps) {
       length: data.length
     });
     deferredSave(session.id, session.id, false, data);
-    //useEditorStore.getState().openSession(noteId);
   };
 
   return (
@@ -1158,15 +1170,16 @@ function VoiceNoteView({ session }: VoiceNoteViewProps) {
           <Button
             variant="secondary"
             onClick={handleSkip}
+            disabled={isSaving}
           >
             {strings.skip()}
           </Button>
           <Button
             variant="primary"
             onClick={handleDone}
-            disabled={!audioBlob}
+            disabled={!audioBlob || isSaving}
           >
-            {strings.done()}
+            {isSaving ? strings.saving() : strings.done()}
           </Button>
         </Flex>
       </Flex>
