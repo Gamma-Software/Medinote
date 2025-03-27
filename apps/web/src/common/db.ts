@@ -39,15 +39,27 @@ async function initializeDatabase(persistence: DatabasePersistence) {
     await useKeyStore.getState().setValue("databaseKey", databaseKey);
   }
 
-  db.host({
-    API_HOST: "https://api.notesnook.com",
-    AUTH_HOST: "https://auth.streetwriters.co",
-    SSE_HOST: "https://events.streetwriters.co",
-    ISSUES_HOST: "https://issues.streetwriters.co",
-    MONOGRAPH_HOST: "https://monogr.ph",
-    SUBSCRIPTIONS_HOST: "https://subscriptions.streetwriters.co",
-    ...Config.get("serverUrls", {})
-  });
+  if (IS_TESTING) {
+    const base = `http://localhost`;
+    db.host({
+      API_HOST: `${base}:5264`,
+      AUTH_HOST: `${base}:8264`,
+      SSE_HOST: `${base}:7264`,
+      ISSUES_HOST: `${base}:2624`,
+      SUBSCRIPTIONS_HOST: `${base}:9264`,
+      MONOGRAPH_HOST: `${base}:6264`
+    });
+  } else {
+    db.host({
+      API_HOST: "https://api.notesnook.com",
+      AUTH_HOST: "https://auth.streetwriters.co",
+      SSE_HOST: "https://events.streetwriters.co",
+      ISSUES_HOST: "https://issues.streetwriters.co",
+      MONOGRAPH_HOST: "https://monogr.ph",
+      SUBSCRIPTIONS_HOST: "https://subscriptions.streetwriters.co",
+      ...Config.get("serverUrls", {})
+    });
+  }
 
   const storage = new NNStorage(
     "Notesnook",
@@ -88,26 +100,10 @@ async function initializeDatabase(persistence: DatabasePersistence) {
     batchSize: 100
   });
 
-  // if (IS_TESTING) {
-
-  // } else {
-  // db.host({
-  //   API_HOST: "http://localhost:5264",
-  //   AUTH_HOST: "http://localhost:8264",
-  //   SSE_HOST: "http://localhost:7264",
-  // });
-  // const base = `http://localhost`;
-  // db.host({
-  //   API_HOST: `${base}:5264`,
-  //   AUTH_HOST: `${base}:8264`,
-  //   SSE_HOST: `${base}:7264`,
-  //   ISSUES_HOST: `${base}:2624`,
-  //   SUBSCRIPTIONS_HOST: `${base}:9264`
-  // });
-  // }
-
   performance.mark("start:initdb");
+  logger.info("Initializing database...");
   await db.init();
+  logger.info("Database initialized");
   performance.mark("end:initdb");
 
   window.addEventListener("beforeunload", async () => {
@@ -116,8 +112,9 @@ async function initializeDatabase(persistence: DatabasePersistence) {
       await logManager?.close();
     }
   });
-
+  logger.info("Checking if migrations are required...");
   if (db.migrations?.required()) {
+    logger.info("Migrations required");
     await import("../dialogs/migration-dialog").then(({ MigrationDialog }) =>
       MigrationDialog.show({})
     );

@@ -143,6 +143,6 @@ export const DATE_FORMATS = [
 
 export const TIME_FORMATS = ["12-hour", "24-hour"];
 
-export const CURRENT_DATABASE_VERSION = 6.1;
+export const CURRENT_DATABASE_VERSION = 8;
 
 export const FREE_NOTEBOOKS_LIMIT = 20;

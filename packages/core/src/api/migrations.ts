@@ -77,6 +77,10 @@ const collections: MigratableCollections = [
   {
     name: "vaults",
     table: "vaults"
+  },
+  {
+    name: "audio",
+    table: "audio"
   }
 ];
 
@@ -103,7 +107,12 @@ class Migrations {
     try {
       if (!this.required() || this.migrating) return;
       this.migrating = true;
-
+      console.info(
+        "Migrating database from version",
+        this.version,
+        "to version",
+        CURRENT_DATABASE_VERSION
+      );
       await this.migrator.migrate(this.db, collections, this.version);
       await this.db.kv().write("v", CURRENT_DATABASE_VERSION);
       this.version = CURRENT_DATABASE_VERSION;

@@ -182,10 +182,23 @@ export async function createTriggers(db: Kysely<RawDatabaseSchema>) {
 }
 
 export async function dropTriggers(db: Kysely<DatabaseSchema>) {
-  await db.schema.dropTrigger("content_after_insert_content_fts").execute();
-  await db.schema.dropTrigger("content_after_delete_content_fts").execute();
-  await db.schema.dropTrigger("content_after_update_content_fts").execute();
-  await db.schema.dropTrigger("notes_after_insert_notes_fts").execute();
-  await db.schema.dropTrigger("notes_after_delete_notes_fts").execute();
-  await db.schema.dropTrigger("notes_after_update_notes_fts").execute();
+  const triggers = [
+    "content_after_insert_content_fts",
+    "content_after_delete_content_fts",
+    "content_after_update_content_fts",
+    "notes_after_insert_notes_fts",
+    "notes_after_delete_notes_fts",
+    "notes_after_update_notes_fts"
+  ];
+
+  for (const trigger of triggers) {
+    try {
+      await db.schema.dropTrigger(trigger).execute();
+    } catch (error: any) {
+      // Ignore errors if trigger doesn't exist
+      if (!error.message?.includes("no such trigger")) {
+        throw error;
+      }
+    }
+  }
 }

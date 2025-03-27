@@ -232,7 +232,8 @@ const TABLE_MAP = {
   tag: "tags",
   color: "colors",
   attachment: "attachments",
-  vault: "vaults"
+  vault: "vaults",
+  audio: "audio"
 } as const;
 
 type RelatableTable = typeof TABLE_MAP;

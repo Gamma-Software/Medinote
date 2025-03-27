@@ -22,6 +22,10 @@ import { useState, useRef, useEffect } from "react";
 import MDIIcon from "@mdi/react";
 import { mdiMicrophone, mdiStop, mdiAlertCircle } from "@mdi/js";
 import { strings } from "@notesnook/intl";
+import { db } from "../../common/db";
+import { useEditorStore } from "../../stores/editor-store";
+import { saveBase64Audio } from "../../utils/audio-utils";
+import { getId } from "@notesnook/core";
 
 interface VoiceRecorderProps {
   onRecordingComplete: (audioBlob: Blob) => void;
@@ -97,8 +101,52 @@ export function VoiceRecorder({ onRecordingComplete }: VoiceRecorderProps) {
         }
       };
 
-      mediaRecorder.onstop = () => {
+      mediaRecorder.onstop = async () => {
         const audioBlob = new Blob(chunksRef.current, { type: "audio/webm" });
+
+        // Get the current note ID from the editor store
+        const currentSession = useEditorStore.getState().getActiveSession();
+        const noteId = currentSession && "note" in currentSession ? currentSession.note.id : null;
+
+        if (noteId) {
+          try {
+            // Convert audio blob to base64
+            const reader = new FileReader();
+            reader.readAsDataURL(audioBlob);
+            reader.onloadend = async () => {
+              const base64Audio = reader.result as string;
+              const timestamp = new Date().toLocaleString();
+
+              // Save the audio file
+              const audioPath = await saveBase64Audio(
+                base64Audio,
+                `voice_note_${timestamp}`,
+                audioBlob.type
+              );
+
+              // Create an audio record in the database
+              const audioId = getId();
+              await db.audio.add({
+                id: audioId,
+                type: "audio",
+                dateModified: Date.now(),
+                dateCreated: Date.now(),
+                path: audioPath,
+                platform: "web"
+              });
+
+              // Create a relation between the note and the audio file
+              await db.relations.add(
+                { type: "note", id: noteId },
+                { type: "audio", id: audioId }
+              );
+            };
+          } catch (error) {
+            console.error("Error saving audio file:", error);
+            setError("Failed to save audio recording");
+          }
+        }
+
         onRecordingComplete(audioBlob);
         chunksRef.current = [];
       };

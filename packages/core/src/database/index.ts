@@ -57,6 +57,7 @@ import {
   TrashOrItem,
   ValueOf,
   Vault,
+  Audio,
   isDeleted
 } from "../types.js";
 import { logger } from "../logger.js";
@@ -90,6 +91,7 @@ export interface DatabaseSchema {
   sessioncontent: SQLiteItem<SessionContentItem>;
   shortcuts: SQLiteItem<Shortcut>;
   vaults: SQLiteItem<Vault>;
+  audio: SQLiteItem<Audio>;
 }
 
 export type RawDatabaseSchema = DatabaseSchema & {
@@ -314,9 +316,10 @@ export async function initializeDatabase<Schema>(
       db,
       provider: migrationProvider
     });
-    const needsMigration = await migrator
-      .getMigrations()
-      .then((m) => m.some((m) => !m.executedAt));
+    const migrations = await migrator.getMigrations();
+    console.debug("All migrations:", migrations);
+    const needsMigration = migrations.some((m) => !m.executedAt);
+    console.debug("Needs migration:", needsMigration);
     if (!needsMigration) return db;
 
     EV.publish(EVENTS.migrationStarted, name);

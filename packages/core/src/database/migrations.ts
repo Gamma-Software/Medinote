@@ -383,6 +383,21 @@ export class NNMigrationProvider implements MigrationProvider {
           });
           await rebuildSearchIndex(db);
         }
+      },
+      "8": {
+        async up(db) {
+          console.log("Starting migration 8: Creating audio table...");
+          await db.schema
+            .createTable("audio")
+            .modifyEnd(sql`without rowid`)
+            .$call(addBaseColumns)
+            .addColumn("path", "text")
+            .addColumn("platform", "text")
+            .execute();
+          console.log(
+            "Migration 8 completed: Audio table created successfully"
+          );
+        }
       }
     };
   }

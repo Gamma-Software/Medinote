@@ -177,7 +177,8 @@ const itemTypeToCollectionKey = {
   shortcut: "shortcuts",
   settingitem: "settings",
   settings: "settings",
-  vault: "vaults"
+  vault: "vaults",
+  audio: "audio"
 } as const;
 
 type CollectionName = ValueOf<typeof itemTypeToCollectionKey>;

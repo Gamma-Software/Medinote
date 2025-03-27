@@ -80,6 +80,7 @@ import { createTriggers, dropTriggers } from "../database/triggers.js";
 import { NNMigrationProvider } from "../database/migrations.js";
 import { ConfigStorage } from "../database/config.js";
 import { LazyPromise } from "../utils/lazy-promise.js";
+import { AudioCollection } from "../collections/audio.js";
 
 type EventSourceConstructor = new (
   uri: string,
@@ -232,11 +233,13 @@ class Database {
    * @deprecated only kept here for migration purposes
    */
   legacySettings = new LegacySettings(this);
-  // constructor() {
-  //   this.sseMutex = new Mutex();
-  //   // this.lastHeartbeat = undefined; // { local: 0, server: 0 };
-  //   // this.timeErrorFailures = 0;
-  // }
+
+  readonly audio: AudioCollection;
+
+  constructor(options: Options) {
+    this.options = options;
+    this.audio = new AudioCollection(this);
+  }
 
   setup(options: Options) {
     this.options = options;
@@ -329,6 +332,7 @@ class Database {
     await this.relations.init();
     await this.notes.init();
     await this.vaults.init();
+    await this.audio.init();
 
     await this.trash.init();
 

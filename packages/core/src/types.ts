@@ -77,6 +77,7 @@ export type Collections = {
   sessioncontent: "sessioncontent";
   settingsv2: "settingitem";
   vaults: "vault";
+  audio: "audio";
 
   /**
    * @deprecated only kept here for migration purposes
@@ -127,6 +128,7 @@ export type ItemMap = {
   sessioncontent: SessionContentItem;
   settingitem: SettingItem;
   vault: Vault;
+  audio: Audio;
 
   /**
    * @deprecated only kept here for migration purposes
@@ -480,6 +482,11 @@ export interface SettingItem<
 export interface Vault extends BaseItem<"vault"> {
   title: string;
   key: Cipher<"base64">;
+}
+
+export interface Audio extends BaseItem<"audio"> {
+  path: string;
+  platform: "ios" | "android" | "web" | "macos" | "linux" | "windows";
 }
 
 export interface DeletedItem {

@@ -17,35 +17,29 @@ You should have received a copy of the GNU General Public License
 along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
-import { Cipher } from "@notesnook/crypto";
+import Database from "../api/index.js";
+import { Audio } from "../types.js";
+import { ICollection } from "./collection.js";
+import { SQLCollection } from "../database/sql-collection.js";
 
-export type SyncItem = {
-  id: string;
-  v: number;
-} & Cipher<"base64">;
+export class AudioCollection implements ICollection {
+  name = "audio";
+  readonly collection: SQLCollection<"audio", Audio>;
+  constructor(private readonly db: Database) {
+    this.collection = new SQLCollection(
+      db.sql,
+      db.transaction,
+      "audio",
+      db.eventManager,
+      db.sanitizer
+    );
+  }
 
-export type SyncableItemType = keyof typeof SYNC_COLLECTIONS_MAP;
+  async init() {
+    await this.collection.init();
+  }
 
-export const SYNC_COLLECTIONS_MAP = {
-  settingitem: "settings",
-  attachment: "attachments",
-  content: "content",
-  notebook: "notebooks",
-  shortcut: "shortcuts",
-  reminder: "reminders",
-  relation: "relations",
-  tag: "tags",
-  color: "colors",
-  note: "notes",
-  vault: "vaults",
-  audio: "audio"
-} as const;
-
-export const SYNC_ITEM_TYPES = Object.keys(
-  SYNC_COLLECTIONS_MAP
-) as SyncableItemType[];
-
-export type SyncTransferItem = {
-  items: SyncItem[];
-  type: SyncableItemType;
-};
+  async add(item: Audio) {
+    await this.collection.upsert(item);
+  }
+}
